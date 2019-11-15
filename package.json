@@ -1,0 +1,13 @@
+{
+  "name": "code-smell-visualizer",
+  "version": "1.0.0",
+  "description": "packages",
+  "main": "src/index.js",
+  "repository": "https://github.com/kekwan/takjo-code-smell-visualizer.git",
+  "author": "Kenny Kwan <kenny.kwan9@gmail.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "scripts": {
+    "start": "http-server src -p 9001"
+  }
+}
