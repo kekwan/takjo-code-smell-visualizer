@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-
-<!-- Load d3.js -->
-<script src="https://d3js.org/d3.v4.js"></script>
-<!-- Color palette -->
-<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-
+<head>
+    <meta charset="utf-8">
+    <!-- Load d3.js -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <!-- Color palette -->
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3-queue.v3.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+</head>
 <!-- Create a div where the graph will take place -->
-<div id="my_dataviz"></div>
 
-<style>
-    .node:hover {
-        stroke-width: 7px !important;
-        opacity: 1 !important;
-    }
-</style>
+<body>
+    <div id="bubble_chart"></div>
+</body>
 
-<script type="text/javascript" src="scripts/index.js"></script>
-
+<script>
+    d3.queue()
+      .defer(d3.json, "metrics/mockNumericMethodInfo.json")
+      .await(create);
+  </script>

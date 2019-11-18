@@ -2,7 +2,7 @@
   "name": "code-smell-visualizer",
   "version": "1.0.0",
   "description": "packages",
-  "main": "src/index.js",
+  "main": "index.js",
   "repository": "https://github.com/kekwan/takjo-code-smell-visualizer.git",
   "author": "Kenny Kwan <kenny.kwan9@gmail.com>",
   "license": "MIT",
