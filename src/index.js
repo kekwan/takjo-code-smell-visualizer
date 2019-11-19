@@ -1,10 +1,7 @@
 function create(error, numericInfo) {
-    console.log(numericInfo);
-    console.log(1233);
-
     // set the dimensions and margins of the graph
-    var width = 1200
-    var height = 800
+    var width = 1000;
+    var height = 800;
 
     // set the thresholds for code smell metrics
     var numLinesPerMethod = 0;
@@ -33,7 +30,7 @@ function create(error, numericInfo) {
         .range([15, 120])  // circle will be between 15 and 120 px wide
 
     // create a tooltip
-    var Tooltip = d3.select("#my_dataviz")
+    var Tooltip = d3.select("#bubble_chart")
         .append("div")
         .style("opacity", 0)
         .attr("class", "tooltip")
@@ -42,15 +39,19 @@ function create(error, numericInfo) {
         .style("border-width", "2px")
         .style("border-radius", "5px")
         .style("padding", "5px")
-
+        .style("position", "absolute")
+        .style("z-index", "10")
+        .style("visibility", "hidden")
+        .text("a simple tooltip");
     // Three function that change the tooltip when user hover / move / leave a cell
     var mouseover = function (d) {
         Tooltip
             .style("opacity", 1)
+            .style("visibility", "visible")
     }
     var mousemove = function (d) {
         Tooltip
-            .html('<u>' + d.key + '</u>' + "<br>" + d.value + " inhabitants")
+            .html('<u>' + d.methodName + '</u>')
             .style("left", (d3.mouse(this)[0] + 20) + "px")
             .style("top", (d3.mouse(this)[1]) + "px")
     }
@@ -60,37 +61,30 @@ function create(error, numericInfo) {
     }
 
     // Initialize the circle: all located at the center of the svg area
-    var nodes = svg.selectAll("g")
-    .data(data);
-
-    var g = nodes.enter().append("g");
-
-    // var node = svg.append("g")
-    //     .selectAll("circle")
-    //     .data(data)
-    //     .enter()
-    //     .append("g")
-    //     .attr("class", "node");
-
-    var circles = g.append("circle")
+    var node = svg.append("g")
+        .selectAll("circle")
+        .data(data)
+        .enter()
+        .append("circle")
         .attr("class", "node")
         .attr("r", function (d) { return size(d.numLines) })
-        // .attr("cx", width / 2)
-        // .attr("cy", height / 2)
-        .style("fill", function (d) { return color(d.methodName) })
+        .attr("cx", width / 2)
+        .attr("cy", height / 2)
+        .style("fill", function (d) { return color(d.numLines) })
         .style("fill-opacity", 0.8)
         .attr("stroke", "black")
         .style("stroke-width", 1)
         .on("mouseover", mouseover) // What to do when hovered
         .on("mousemove", mousemove)
         .on("mouseleave", mouseleave)
+        .on("click", function(d) {
+            console.log(d);
+            console.log(d3.select(this));
+        })
         .call(d3.drag() // call specific function when circle is dragged
             .on("start", dragstarted)
             .on("drag", dragged)
             .on("end", dragended));
-
-    var text = g.append("text")
-        .text(function(d) {return d.methodName});
 
     // Features of the forces applied to the nodes:
     var simulation = d3.forceSimulation()
@@ -103,12 +97,9 @@ function create(error, numericInfo) {
     simulation
         .nodes(data)
         .on("tick", function (d) {
-            // g.attr("cx", function(d){return d.x})
-            // .attr("cy", function(d){return d.y})
-            g.attr("transform", function(d) {
-                    return "translate(" + d.x + "," + d.y + ")";
-                  })
-
+            node
+                .attr("cx", function (d) { return d.x; })
+                .attr("cy", function (d) { return d.y; })
         });
 
     // What happens when a circle is dragged?
