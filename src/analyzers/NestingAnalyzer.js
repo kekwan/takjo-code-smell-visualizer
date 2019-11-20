@@ -1,54 +1,39 @@
-const fs = require('fs');
-class NestingAnalyzer {
-
-    /*
-    * FileName
-    * ClassName
-    * MethodName [All Methods]
-    * # of methods [total]
-    * # of methods that contain bad deep nesting
-    * # of methods that contain nesting [total]
-    * Nesting Count [all methods]
-    * */
-    data = [];
+import * as fs from 'fs'
+export class NestingAnalyzer {
     relativePath = "../input/";
     // key is string fileName.java, value is a string which is file content;
     classMap = new Map();
 
-    // key is string methodName, value is a string which is the method content;
-    forLoopMethodMap = new Map();
+     run(obj) {
+        this.loadJavaFiles(this.relativePath);
+        this.readFiles(obj);
+        return obj;
+    }
 
-    // Key is className
-    // Total # of methods that contain nesting
-    // # of methods that contain bad deep nesting
-    // weight
-    // fileName in which class was found
-    badNestingObj;
-
-    loadJavaFiles(path) {
-        let files = fs.readdirSync(path);
+    // load java files in path and store it to classMap
+    loadJavaFiles() {
+        let files = fs.readdirSync(this.relativePath);
         for (let file of files) {
             let extension = file.split(".").pop();
-            if (fs.statSync(path + file).isFile() && extension === 'java') {
-                let fileData = fs.readFileSync(path + file, 'utf8');
+            if (fs.statSync(this.relativePath + file).isFile() && extension === 'java') {
+                let fileData = fs.readFileSync(this.relativePath + file, 'utf8');
                 this.classMap.set(file, fileData);
-            } else if (fs.statSync(path + file).isDirectory()) {
-                this.loadJavaFiles(path + file + '/');
+            } else if (fs.statSync(this.relativePath + file).isDirectory()) {
+                this.loadJavaFiles(this.relativePath + file + '/');
             }
         }
+        console.log(this.classMap.keys())
     }
 
     // read all files in classMap and calls
     // the appropriate analyzer based on keyword if or for
-    readFiles() {
+    readFiles(obj) {
         for (let className of this.classMap.keys()) {
             let content = this.classMap.get(className);
             const lines = content.split(/\r\n|\n/);
             for (let i = 0; i < lines.length; i++) {
                 let line = lines[i].trim();
-                if (this.isClass(line)) {
-                    // todo; stretch goal
-                } else if (this.isMethod(line)) {
+                if (this.isMethod(line)) {
                     let methodCode = this.getMethod(lines, i);
                     let methodName = this.getMethodName(line);
                     if (this.hasForLoop(methodCode)) {
@@ -122,6 +107,8 @@ class NestingAnalyzer {
         }
         return result;
     }
+
+    // returns true if this line declares a class
     isClass(line) {
         let visibility = ['public', 'private', 'protected'];
         let strArray = line.split(" ");
@@ -131,7 +118,7 @@ class NestingAnalyzer {
         return false;
     }
 
-
+    // gets the methodName on this line
     getMethodName(line) {
         let strArray = line.split(" ");
         for (let str of strArray) {
@@ -140,6 +127,7 @@ class NestingAnalyzer {
         }
     }
 
+    // determines if this line contains a for loop procedure
     isForLoop(line) {
         let strArray = line.split(" ");
         if (strArray.length > 0) {
@@ -148,10 +136,13 @@ class NestingAnalyzer {
         return false;
     }
 
+    // determines if this line contains an if statement
     isIfStatement(line) {
-
+        // todo
     }
 
+    // true if this line is a method definition
+    // false otherwise
     isMethod(line) {
         let visibility = ['public', 'private', 'protected'];
         let keywords = ['class', 'abstract', 'interface', 'enum'];
@@ -162,6 +153,7 @@ class NestingAnalyzer {
         return false;
     }
 
+    // determines if the methodCode contains a for loop procedure
     hasForLoop(methodCode) {
         let lines = methodCode.split('\n');
         for (let i = 0; i < lines.length; i++) {
@@ -173,7 +165,7 @@ class NestingAnalyzer {
     }
 
 
-
+    // gets the content (code) of the method
     getMethod(lines, index) {
         let methodContent = '';
         for (let i = index; i < lines.length; i++){
@@ -189,8 +181,8 @@ class NestingAnalyzer {
     }
 }
 
-let test = new NestingAnalyzer();
+//let test = new NestingAnalyzer();
 //test.getClassData();
 //test.getMethod();
-test.loadJavaFiles('../input/');
+//test.loadJavaFiles('../input/');
 //test.readFiles();
