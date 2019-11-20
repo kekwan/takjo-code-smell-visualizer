@@ -11,5 +11,6 @@
   },
   "scripts": {
     "start": "http-server src -p 9001"
-  }
+  },
+  "type": "module"
 }
