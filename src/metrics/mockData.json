@@ -3,7 +3,8 @@
         {
             "id" : 1,
             "className": "Server",
-            "classSize": 600,
+            "classSize": 810,
+            "codeSmellScore" : 12,
             "methodMetrics": [
                 {
                     "methodName": "start",
@@ -27,6 +28,7 @@
             "id" : 2,
             "className": "ASTDrawer",
             "classSize": 110,
+            "codeSmellScore" : 2,
             "methodMetrics": [
                 {
                     "methodName": "drawAst",
@@ -50,6 +52,7 @@
             "id" : 3,
             "className": "AccountController",
             "classSize": 20,
+            "codeSmellScore" : 32,
             "methodMetrics": [
                 {
                     "methodName": "addAccount",
@@ -66,6 +69,7 @@
             "id" : 4,
             "className": "Main",
             "classSize": 2000,
+            "codeSmellScore" : 240,
             "methodMetrics": [
                 {
                     "methodName": "doEverything",
