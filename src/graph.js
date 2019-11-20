@@ -1,8 +1,5 @@
 function create(error, classMetrics) {
-  var data = classMetrics.data;
-  createNetwork(data);
-  //createBarChart(numericInfo);
-
+  createNetwork(classMetrics.data);
 };
 
 
@@ -67,17 +64,15 @@ function createNetwork(data) {
 
   // Three function that change the tooltip when user hover / move / leave a cell
   var mouseover = function (d) {
-    console.log("over");
     Tooltip
       .html('<u>' + d.className + '</u>')
-      .style("left", (d3.mouse(this)[0] + 20) + "px")
+      .style("left", (d3.mouse(this)[0] + 10) + "px")
       .style("top", (d3.mouse(this)[1]) + "px")
       .style("opacity", 1)
       .style("visibility", "visible")
   }
 
   var mouseleave = function (d) {
-    console.log("leave");
     Tooltip
       .style("opacity", 0)
       .style("visibility", "hidden")
@@ -101,8 +96,10 @@ function createNetwork(data) {
     .style("fill", function (d) { return color(d) })
     .on("mouseenter", mouseover)
     .on("mouseleave", mouseleave)
-
-
+    .on("click", function (d) {
+      createBarChart(d.methodMetrics);
+      $(".modal").modal("show");
+    })
 
   // Let's list the force we wanna apply on the network
   var simulation = d3.forceSimulation(data)                   // Force algorithm is applied to data.nodes
@@ -128,61 +125,61 @@ function createNetwork(data) {
   }
 }
 
-function createBarChart(numericInfo) {
-  data = numericInfo.data;
-  // set the dimensions and margins of the graph
-  var margin = { top: 20, right: 20, bottom: 30, left: 40 },
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+function createBarChart(methodData) {
+  console.log(methodData);
+  // // set the dimensions and margins of the graph
+  // var margin = { top: 20, right: 20, bottom: 30, left: 40 },
+  //   width = 960 - margin.left - margin.right,
+  //   height = 500 - margin.top - margin.bottom;
 
-  // set the ranges
-  var x = d3.scaleBand()
-    .range([0, width])
-    .padding(0.1);
-  var y = d3.scaleLinear()
-    .range([height, 0]);
+  // // set the ranges
+  // var x = d3.scaleBand()
+  //   .range([0, width])
+  //   .padding(0.1);
+  // var y = d3.scaleLinear()
+  //   .range([height, 0]);
 
-  // append the svg object to the body of the page
-  // append a 'group' element to 'svg'
-  // moves the 'group' element to the top left margin
-  var svg = d3.select("#metric-chart").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform",
-      "translate(" + margin.left + "," + margin.top + ")");
+  // // append the svg object to the body of the page
+  // // append a 'group' element to 'svg'
+  // // moves the 'group' element to the top left margin
+  // var svg = d3.select("#metric-chart").append("svg")
+  //   .attr("width", width + margin.left + margin.right)
+  //   .attr("height", height + margin.top + margin.bottom)
+  //   .append("g")
+  //   .attr("transform",
+  //     "translate(" + margin.left + "," + margin.top + ")");
 
 
-  // // get the data
-  // if (error) throw error;
+  // // // get the data
+  // // if (error) throw error;
 
-  // // format the data
-  // data.forEach(function (d) {
-  //     d.sales = +d.sales;
-  // });
+  // // // format the data
+  // // data.forEach(function (d) {
+  // //     d.sales = +d.sales;
+  // // });
 
-  // Scale the range of the data in the domains
-  x.domain(data.map(function (d) { return d.methodName; }));
-  y.domain([0, d3.max(data, function (d) { return d.numLines; })]);
+  // // Scale the range of the data in the domains
+  // x.domain(data.map(function (d) { return d.methodName; }));
+  // y.domain([0, d3.max(data, function (d) { return d.numLines; })]);
 
-  // append the rectangles for the bar chart
-  svg.selectAll(".bar")
-    .data(data)
-    .enter().append("rect")
-    .attr("class", "bar")
-    .attr("x", function (d) { return x(d.methodName); })
-    .attr("width", x.bandwidth())
-    .attr("y", function (d) { return y(d.numLines); })
-    .attr("height", function (d) { return height - y(d.numLines); });
+  // // append the rectangles for the bar chart
+  // svg.selectAll(".bar")
+  //   .data(data)
+  //   .enter().append("rect")
+  //   .attr("class", "bar")
+  //   .attr("x", function (d) { return x(d.methodName); })
+  //   .attr("width", x.bandwidth())
+  //   .attr("y", function (d) { return y(d.numLines); })
+  //   .attr("height", function (d) { return height - y(d.numLines); });
 
-  // add the x Axis
-  svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x));
+  // // add the x Axis
+  // svg.append("g")
+  //   .attr("transform", "translate(0," + height + ")")
+  //   .call(d3.axisBottom(x));
 
-  // add the y Axis
-  svg.append("g")
-    .call(d3.axisLeft(y));
+  // // add the y Axis
+  // svg.append("g")
+  //   .call(d3.axisLeft(y));
 }
 
 function createCenterLinks(data) {
@@ -193,6 +190,5 @@ function createCenterLinks(data) {
     link.target = data.length;
     links.push(link);
   }
-  console.log("123");
   return links;
 }

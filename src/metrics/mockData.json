@@ -1,10 +1,10 @@
 {
     "data": [
         {
-            "id" : 1,
+            "id": 1,
             "className": "Server",
             "classSize": 810,
-            "codeSmellScore" : 12,
+            "codeSmellScore": 12,
             "methodMetrics": [
                 {
                     "methodName": "start",
@@ -25,10 +25,10 @@
             ]
         },
         {
-            "id" : 2,
+            "id": 2,
             "className": "ASTDrawer",
             "classSize": 110,
-            "codeSmellScore" : 2,
+            "codeSmellScore": 2,
             "methodMetrics": [
                 {
                     "methodName": "drawAst",
@@ -49,10 +49,10 @@
             ]
         },
         {
-            "id" : 3,
+            "id": 3,
             "className": "AccountController",
             "classSize": 20,
-            "codeSmellScore" : 32,
+            "codeSmellScore": 32,
             "methodMetrics": [
                 {
                     "methodName": "addAccount",
@@ -62,14 +62,13 @@
                     "maxNestedDepth": 0,
                     "lawOfDemeter": 0
                 }
-                
             ]
         },
         {
-            "id" : 4,
+            "id": 4,
             "className": "Main",
             "classSize": 2000,
-            "codeSmellScore" : 240,
+            "codeSmellScore": 240,
             "methodMetrics": [
                 {
                     "methodName": "doEverything",
@@ -78,6 +77,69 @@
                     "isUnused": false,
                     "maxNestedDepth": 500,
                     "lawOfDemeter": 0
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "className": "DatabaseConnector",
+            "classSize": 333,
+            "codeSmellScore": 10,
+            "methodMetrics": [
+                {
+                    "methodName": "connect",
+                    "numLines": 320,
+                    "numParams": 0,
+                    "isUnused": false,
+                    "maxNestedDepth": 5,
+                    "lawOfDemeter": 1
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "className": "BookRepository",
+            "classSize": 41,
+            "codeSmellScore": 90,
+            "methodMetrics": [
+                {
+                    "methodName": "saveBook",
+                    "numLines": 30,
+                    "numParams": 20,
+                    "isUnused": true,
+                    "maxNestedDepth": 5,
+                    "lawOfDemeter": 2
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "className": "Dog",
+            "classSize": 5,
+            "codeSmellScore": 0,
+            "methodMetrics": []
+        },
+        {
+            "id": 8,
+            "className": "Employee",
+            "classSize": 1000,
+            "codeSmellScore": 150,
+            "methodMetrics": [
+                {
+                    "methodName": "work",
+                    "numLines": 3,
+                    "numParams": 2,
+                    "isUnused": false,
+                    "maxNestedDepth": 1,
+                    "lawOfDemeter": 0
+                },
+                {
+                    "methodName": "handleTransaction",
+                    "numLines": 600,
+                    "numParams": 1,
+                    "isUnused": true,
+                    "maxNestedDepth": 12,
+                    "lawOfDemeter": 2
                 }
             ]
         }

@@ -1,13 +1,10 @@
-.node:hover {
-  stroke-width: 7px !important;
-  opacity: 1 !important;
-}
-
 .link line {
   stroke: #aaa;
 }
 
-.node circle {
-  stroke: none;
-  stroke-width: 40px;
+@media (min-width: 500px) {
+  .modal-xl {
+    width: 90%;
+   max-width:1200px;
+  }
 }
