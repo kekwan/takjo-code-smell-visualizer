@@ -1,0 +1,81 @@
+{
+    "data": [
+        {
+            "id" : 1,
+            "className": "Server",
+            "classSize": 600,
+            "methodMetrics": [
+                {
+                    "methodName": "start",
+                    "numLines": 500,
+                    "numParams": 0,
+                    "isUnused": false,
+                    "maxNestedDepth": 20,
+                    "lawOfDemeter": 1
+                },
+                {
+                    "methodName": "stop",
+                    "numLines": 87,
+                    "numParams": 0,
+                    "isUnused": false,
+                    "maxNestedDepth": 7,
+                    "lawOfDemeter": 6
+                }
+            ]
+        },
+        {
+            "id" : 2,
+            "className": "ASTDrawer",
+            "classSize": 110,
+            "methodMetrics": [
+                {
+                    "methodName": "drawAst",
+                    "numLines": 40,
+                    "numParams": 2,
+                    "isUnused": false,
+                    "maxNestedDepth": 0,
+                    "lawOfDemeter": 0
+                },
+                {
+                    "methodName": "renderImage",
+                    "numLines": 39,
+                    "numParams": 4,
+                    "isUnused": true,
+                    "maxNestedDepth": 5,
+                    "lawOfDemeter": 2
+                }
+            ]
+        },
+        {
+            "id" : 3,
+            "className": "AccountController",
+            "classSize": 20,
+            "methodMetrics": [
+                {
+                    "methodName": "addAccount",
+                    "numLines": 10,
+                    "numParams": 0,
+                    "isUnused": false,
+                    "maxNestedDepth": 0,
+                    "lawOfDemeter": 0
+                }
+                
+            ]
+        },
+        {
+            "id" : 4,
+            "className": "Main",
+            "classSize": 2000,
+            "methodMetrics": [
+                {
+                    "methodName": "doEverything",
+                    "numLines": 1000,
+                    "numParams": 7,
+                    "isUnused": false,
+                    "maxNestedDepth": 500,
+                    "lawOfDemeter": 0
+                }
+            ]
+        }
+    ]
+}

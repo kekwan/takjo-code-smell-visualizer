@@ -7,7 +7,7 @@
     <!-- Color palette -->
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="https://d3js.org/d3-queue.v3.min.js"></script>
-    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="script.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -24,7 +24,7 @@
 <!-- Create a div where the graph will take place -->
 
 <body>
-    <div id="bubble_chart"></div>
+    <div id="network_graph"></div>
     <div id="info_chart">
         <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             Launch demo modal
@@ -53,6 +53,6 @@
 
 <script>
     d3.queue()
-        .defer(d3.json, "metrics/mockNumericMethodInfo.json")
+        .defer(d3.json, "metrics/mockData.json")
         .await(create);
 </script>

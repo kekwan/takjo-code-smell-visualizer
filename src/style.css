@@ -2,3 +2,13 @@
   stroke-width: 7px !important;
   opacity: 1 !important;
 }
+
+.link line {
+  stroke: #aaa;
+}
+
+.node circle {
+  pointer-events: all;
+  stroke: none;
+  stroke-width: 40px;
+}
