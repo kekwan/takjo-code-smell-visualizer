@@ -1,13 +1,14 @@
 import * as la from './LinesAnalyzer.js'
 import * as na from './NestingAnalyzer.js'
 import * as ut from './Utils.js'
+import * as fs from 'fs';
 
 export class Program {
     // object to write to
     obj = {"data":[]};
     classMap = new Map();
     // path to save to
-    relativePath = "";
+    relativePath = "../scripts/metrics/test" + Date.now() +".json";
     main() {
     let test = new ut.Utils();
     let res = test.load();
@@ -21,8 +22,10 @@ export class Program {
         let linesAnalyzer = new la.LinesAnalyzer();
         this.obj = linesAnalyzer.run(this.obj, this.classMap);
 
-        console.log(this.obj.data[0]);
-        console.log(this.obj.data[1]);
+       // console.log(this.obj.data[0]);
+       // console.log(this.obj.data[1]);
+        // todo use fs-extra to ensuredir
+        fs.writeFileSync(this.relativePath, JSON.stringify(this.obj, null, '\t'));
     }
 }
 
