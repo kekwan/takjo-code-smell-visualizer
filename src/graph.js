@@ -99,7 +99,7 @@ function createNetwork(data) {
     .on("mouseenter", mouseover)
     .on("mouseleave", mouseleave)
     .on("click", function (d) {
-      createBarChart(d);
+      createHorizontalBarChart(d);
       $(".modal").modal("show");
     })
 
@@ -127,87 +127,138 @@ function createNetwork(data) {
   }
 }
 
-function createBarChart(classData) {
+function createHorizontalBarChart(classData) {
   var methodMetrics = classData.methodMetrics;
-  $("#modalLongTitle").html("Method Metrics for" + classData.className);
-  // set the dimensions and margins of the graph
-  var margin = { top: 10, right: 30, bottom: 20, left: 50 },
-    width = 650 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+  $("#modalLongTitle").html("Method Metrics for " + classData.className + ".java");
+  $(".chart").empty();
 
-  // append the svg object to the body of the page
-  var svg = d3.select("#metric_charts")
-    .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform",
-      "translate(" + margin.left + "," + margin.top + ")");
+  var data = transformBarChartData(methodMetrics);
 
-  // Parse the Data
+  var chartWidth = 700,
+    barHeight = 20,
+    groupHeight = barHeight * data.series.length,
+    gapBetweenGroups = 10,
+    spaceForLabels = 150,
+    spaceForLegend = 150;
 
+  // Zip the series data together (first values, second values, etc.)
+  var zippedData = [];
+  for (var i = 0; i < data.labels.length; i++) {
+    for (var j = 0; j < data.series.length; j++) {
+      zippedData.push(data.series[j].values[i]);
+    }
+  }
 
-  // List of subgroups = header of the csv files = soil condition here
-  //var subgroups = data.columns.slice(1)
-  //console.log(subgroups);
-  var metricSubGroups = ["numLines", "numParams", "maxNestedDepth", "lawOfDemeter"];
-  console.log(metricSubGroups);
-  // List of groups = species here = value of the first column called group -> I show them on the X axis
-  //var groups = d3.map(data, function (d) { return (d.group) }).keys()
-  //console.log(groups);
+  // Color scale
+  var color = d3.scaleOrdinal(d3.schemeCategory20);
+  var chartHeight = barHeight * zippedData.length + gapBetweenGroups * data.labels.length;
 
-  var methodNameGroups = methodMetrics.map(method => method.methodName);
-  console.log(methodNameGroups);
-  // Add X axis
-  var x = d3.scaleBand()
-    .domain(methodNameGroups)
-    .range([0, width])
-    .padding([0.2])
-  svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x).tickSize(0));
+  var x = d3.scaleLinear()
+    .domain([0, d3.max(zippedData)])
+    .range([0, chartWidth]);
 
-  // Add Y axis
   var y = d3.scaleLinear()
-    .domain([0, 200])
-    .range([height, 0]);
-  svg.append("g")
-    .call(d3.axisLeft(y));
+    .range([chartHeight + gapBetweenGroups, 0]);
 
-  // Another scale for subgroup position?
-  var xSubgroup = d3.scaleBand()
-    .domain(metricSubGroups)
-    .range([0, x.bandwidth()])
-    .padding([0.05])
+  var yAxis = d3.axisLeft(y);
 
-  // color palette = one color per subgroup
-  var color = d3.scaleOrdinal()
-    .domain(metricSubGroups)
-    .range(['#A0C5CD', '#A2CDA0', '#CDC9A0', '#CDA4A0'])
+  // Specify the chart area and dimensions
+  var chart = d3.select(".chart")
+    .attr("width", spaceForLabels + chartWidth + spaceForLegend)
+    .attr("height", chartHeight);
 
-  // Show the bars
-  svg.append("g")
-    .selectAll("g")
-    // Enter in data = loop group per group
-    .data(methodMetrics)
+  // Create bars
+  var bar = chart.selectAll("g")
+    .data(zippedData)
+    .enter().append("g")
+    .attr("transform", function (d, i) {
+      return "translate(" + spaceForLabels + "," + (i * barHeight + gapBetweenGroups * (0.5 + Math.floor(i / data.series.length))) + ")";
+    });
+
+  // Create rectangles of the correct width
+  bar.append("rect")
+    .attr("fill", function (d, i) { return color(i % data.series.length); })
+    .attr("class", "bar")
+    .attr("width", x)
+    .attr("height", barHeight - 1);
+
+  // Add text label in bar
+  bar.append("text")
+    .attr("x", function (d) { return x(d) - 3; })
+    .attr("y", barHeight / 2)
+    .attr("fill", "red")
+    .attr("dy", ".35em")
+    .text(function (d) { return d; });
+
+  // Draw labels
+  bar.append("text")
+    .attr("class", "label")
+    .attr("x", function (d) { return - 10; })
+    .attr("y", groupHeight / 2)
+    .attr("dy", ".35em")
+    .text(function (d, i) {
+      if (i % data.series.length === 0)
+        return data.labels[Math.floor(i / data.series.length)];
+      else
+        return ""
+    });
+
+  chart.append("g")
+    .attr("class", "y axis")
+    .attr("transform", "translate(" + spaceForLabels + ", " + -gapBetweenGroups / 2 + ")")
+    .call(yAxis);
+
+  // Draw legend
+  var legendRectSize = 18,
+    legendSpacing = 4;
+
+  var legend = chart.selectAll('.legend')
+    .data(data.series)
     .enter()
-    .append("g")
-    .attr("transform", function (d) {
-      return "translate(" + x(d.methodName) + ",0)";
-    })
-    .selectAll("rect")
-    .data(function (d) {
-      return metricSubGroups.map(function (key) { return { key: key, value: d[key] }; });
-    })
-    .enter().append("rect")
-    .attr("x", function (d) {
-      return xSubgroup(d.key);
-    })
-    .attr("y", function (d) { return y(d.value); })
-    .attr("width", xSubgroup.bandwidth())
-    .attr("height", function (d) { return height - y(d.value); })
-    .attr("fill", function (d) { return color(d.key); });
+    .append('g')
+    .attr('transform', function (d, i) {
+      var height = legendRectSize + legendSpacing;
+      var offset = -gapBetweenGroups / 2;
+      var horz = spaceForLabels + chartWidth + 40 - legendRectSize;
+      var vert = i * height - offset;
+      return 'translate(' + horz + ',' + vert + ')';
+    });
+
+  legend.append('rect')
+    .attr('width', legendRectSize)
+    .attr('height', legendRectSize)
+    .style('fill', function (d, i) { return color(i); })
+    .style('stroke', function (d, i) { return color(i); });
+
+  legend.append('text')
+    .attr('class', 'legend')
+    .attr('x', legendRectSize + legendSpacing)
+    .attr('y', legendRectSize - legendSpacing)
+    .text(function (d) { return d.label; });
 }
+
+function transformBarChartData(methodMetrics) {
+  var data = {};
+  var methodNameLabels = methodMetrics.map(method => method.methodName);
+  data.labels = methodNameLabels;
+
+  var series = [];
+  var numLinesValues = methodMetrics.map(method => method.numLines);
+  series.push({ "label" : "numLines", "values" : numLinesValues});
+
+  var numParamsValues = methodMetrics.map(method => method.numParams);
+  series.push({ "label" : "numParams", "values" : numParamsValues});
+
+  var maxNestedDepthValues = methodMetrics.map(method => method.maxNestedDepth);
+  series.push({ "label" : "maxNestedDepth", "values" : maxNestedDepthValues});
+
+  var lawOfDemeterValues = methodMetrics.map(method => method.lawOfDemeter);
+  series.push({ "label" : "LawOfDemeter", "values" : lawOfDemeterValues});
+  
+  data.series = series;
+  return data;
+}
+
 
 function createCenterLinks(data) {
   var links = [];

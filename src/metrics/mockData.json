@@ -135,7 +135,7 @@
                 },
                 {
                     "methodName": "handleTransaction",
-                    "numLines": 600,
+                    "numLines": 20,
                     "numParams": 1,
                     "isUnused": true,
                     "maxNestedDepth": 12,
