@@ -64,6 +64,8 @@ function createNetwork(data) {
 
   // Three function that change the tooltip when user hover / move / leave a cell
   var mouseover = function (d) {
+    // console.log(d3.mouse(this));
+    // console.log(this);
     Tooltip
       .html('<u>' + d.className + '</u>')
       .style("left", (d3.mouse(this)[0] + 10) + "px")
@@ -97,7 +99,7 @@ function createNetwork(data) {
     .on("mouseenter", mouseover)
     .on("mouseleave", mouseleave)
     .on("click", function (d) {
-      createBarChart(d.methodMetrics);
+      createBarChart(d);
       $(".modal").modal("show");
     })
 
@@ -125,61 +127,89 @@ function createNetwork(data) {
   }
 }
 
-function createBarChart(methodData) {
-  console.log(methodData);
-  // // set the dimensions and margins of the graph
-  // var margin = { top: 20, right: 20, bottom: 30, left: 40 },
-  //   width = 960 - margin.left - margin.right,
-  //   height = 500 - margin.top - margin.bottom;
+function createBarChart(classData) {
+  var methodMetrics = classData.methodMetrics;
+  console.log(methodMetrics);
+  $("#modalLongTitle").html("Method Metrics for" + classData.className);
+  // set the dimensions and margins of the graph
+  var margin = { top: 10, right: 30, bottom: 20, left: 50 },
+    width = 650 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 
-  // // set the ranges
-  // var x = d3.scaleBand()
-  //   .range([0, width])
-  //   .padding(0.1);
-  // var y = d3.scaleLinear()
-  //   .range([height, 0]);
+  // append the svg object to the body of the page
+  var svg = d3.select("#metric_charts")
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform",
+      "translate(" + margin.left + "," + margin.top + ")");
 
-  // // append the svg object to the body of the page
-  // // append a 'group' element to 'svg'
-  // // moves the 'group' element to the top left margin
-  // var svg = d3.select("#metric-chart").append("svg")
-  //   .attr("width", width + margin.left + margin.right)
-  //   .attr("height", height + margin.top + margin.bottom)
-  //   .append("g")
-  //   .attr("transform",
-  //     "translate(" + margin.left + "," + margin.top + ")");
+  // Parse the Data
+  d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_stacked.csv", function (data) {
 
+    // List of subgroups = header of the csv files = soil condition here
+    var subgroups = data.columns.slice(1)
+    //console.log(subgroups);
+    var metricSubGroups = ["numLines", "numParams", "maxNestedDepth", "lawOfDemter"];
+    console.log(metricSubGroups);
+    // List of groups = species here = value of the first column called group -> I show them on the X axis
+    var groups = d3.map(data, function (d) { return (d.group) }).keys()
+    //console.log(groups);
+    
+    var methodNames = methodMetrics.map(method => method.methodName);
+    console.log(methodNames);
+    // Add X axis
+    var x = d3.scaleBand()
+      .domain(groups)
+      .range([0, width])
+      .padding([0.2])
+    svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x).tickSize(0));
 
-  // // // get the data
-  // // if (error) throw error;
+    // Add Y axis
+    var y = d3.scaleLinear()
+      .domain([0, 40])
+      .range([height, 0]);
+    svg.append("g")
+      .call(d3.axisLeft(y));
 
-  // // // format the data
-  // // data.forEach(function (d) {
-  // //     d.sales = +d.sales;
-  // // });
+    // Another scale for subgroup position?
+    var xSubgroup = d3.scaleBand()
+      .domain(subgroups)
+      .range([0, x.bandwidth()])
+      .padding([0.05])
 
-  // // Scale the range of the data in the domains
-  // x.domain(data.map(function (d) { return d.methodName; }));
-  // y.domain([0, d3.max(data, function (d) { return d.numLines; })]);
+    // color palette = one color per subgroup
+    var color = d3.scaleOrdinal()
+      .domain(subgroups)
+      .range(['#e41a1c', '#377eb8', '#4daf4a'])
 
-  // // append the rectangles for the bar chart
-  // svg.selectAll(".bar")
-  //   .data(data)
-  //   .enter().append("rect")
-  //   .attr("class", "bar")
-  //   .attr("x", function (d) { return x(d.methodName); })
-  //   .attr("width", x.bandwidth())
-  //   .attr("y", function (d) { return y(d.numLines); })
-  //   .attr("height", function (d) { return height - y(d.numLines); });
+    // Show the bars
+    svg.append("g")
+      .selectAll("g")
+      // Enter in data = loop group per group
+      .data(data)
+      .enter()
+      .append("g")
+      .attr("transform", function (d) { return "translate(" + x(d.group) + ",0)"; })
+      .selectAll("rect")
+      .data(function (d) { 
+        console.log(d);
+        console.log(subgroups.map(function (key) { return { key: key, value: d[key] }; }));
+        return subgroups.map(function (key) { return { key: key, value: d[key] }; }); })
+      .enter().append("rect")
+      .attr("x", function (d) {
+        //console.log(d); 
+        return xSubgroup(d.key); })
+      .attr("y", function (d) { return y(d.value); })
+      .attr("width", xSubgroup.bandwidth())
+      .attr("height", function (d) { return height - y(d.value); })
+      .attr("fill", function (d) { return color(d.key); });
 
-  // // add the x Axis
-  // svg.append("g")
-  //   .attr("transform", "translate(0," + height + ")")
-  //   .call(d3.axisBottom(x));
+  })
 
-  // // add the y Axis
-  // svg.append("g")
-  //   .call(d3.axisLeft(y));
 }
 
 function createCenterLinks(data) {
