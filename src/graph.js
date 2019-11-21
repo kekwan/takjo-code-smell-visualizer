@@ -129,7 +129,6 @@ function createNetwork(data) {
 
 function createBarChart(classData) {
   var methodMetrics = classData.methodMetrics;
-  console.log(methodMetrics);
   $("#modalLongTitle").html("Method Metrics for" + classData.className);
   // set the dimensions and margins of the graph
   var margin = { top: 10, right: 30, bottom: 20, left: 50 },
@@ -146,70 +145,68 @@ function createBarChart(classData) {
       "translate(" + margin.left + "," + margin.top + ")");
 
   // Parse the Data
-  d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_stacked.csv", function (data) {
 
-    // List of subgroups = header of the csv files = soil condition here
-    var subgroups = data.columns.slice(1)
-    //console.log(subgroups);
-    var metricSubGroups = ["numLines", "numParams", "maxNestedDepth", "lawOfDemter"];
-    console.log(metricSubGroups);
-    // List of groups = species here = value of the first column called group -> I show them on the X axis
-    var groups = d3.map(data, function (d) { return (d.group) }).keys()
-    //console.log(groups);
-    
-    var methodNames = methodMetrics.map(method => method.methodName);
-    console.log(methodNames);
-    // Add X axis
-    var x = d3.scaleBand()
-      .domain(groups)
-      .range([0, width])
-      .padding([0.2])
-    svg.append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x).tickSize(0));
 
-    // Add Y axis
-    var y = d3.scaleLinear()
-      .domain([0, 40])
-      .range([height, 0]);
-    svg.append("g")
-      .call(d3.axisLeft(y));
+  // List of subgroups = header of the csv files = soil condition here
+  //var subgroups = data.columns.slice(1)
+  //console.log(subgroups);
+  var metricSubGroups = ["numLines", "numParams", "maxNestedDepth", "lawOfDemeter"];
+  console.log(metricSubGroups);
+  // List of groups = species here = value of the first column called group -> I show them on the X axis
+  //var groups = d3.map(data, function (d) { return (d.group) }).keys()
+  //console.log(groups);
 
-    // Another scale for subgroup position?
-    var xSubgroup = d3.scaleBand()
-      .domain(subgroups)
-      .range([0, x.bandwidth()])
-      .padding([0.05])
+  var methodNameGroups = methodMetrics.map(method => method.methodName);
+  console.log(methodNameGroups);
+  // Add X axis
+  var x = d3.scaleBand()
+    .domain(methodNameGroups)
+    .range([0, width])
+    .padding([0.2])
+  svg.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x).tickSize(0));
 
-    // color palette = one color per subgroup
-    var color = d3.scaleOrdinal()
-      .domain(subgroups)
-      .range(['#e41a1c', '#377eb8', '#4daf4a'])
+  // Add Y axis
+  var y = d3.scaleLinear()
+    .domain([0, 200])
+    .range([height, 0]);
+  svg.append("g")
+    .call(d3.axisLeft(y));
 
-    // Show the bars
-    svg.append("g")
-      .selectAll("g")
-      // Enter in data = loop group per group
-      .data(data)
-      .enter()
-      .append("g")
-      .attr("transform", function (d) { return "translate(" + x(d.group) + ",0)"; })
-      .selectAll("rect")
-      .data(function (d) { 
-        console.log(d);
-        console.log(subgroups.map(function (key) { return { key: key, value: d[key] }; }));
-        return subgroups.map(function (key) { return { key: key, value: d[key] }; }); })
-      .enter().append("rect")
-      .attr("x", function (d) {
-        //console.log(d); 
-        return xSubgroup(d.key); })
-      .attr("y", function (d) { return y(d.value); })
-      .attr("width", xSubgroup.bandwidth())
-      .attr("height", function (d) { return height - y(d.value); })
-      .attr("fill", function (d) { return color(d.key); });
+  // Another scale for subgroup position?
+  var xSubgroup = d3.scaleBand()
+    .domain(metricSubGroups)
+    .range([0, x.bandwidth()])
+    .padding([0.05])
 
-  })
+  // color palette = one color per subgroup
+  var color = d3.scaleOrdinal()
+    .domain(metricSubGroups)
+    .range(['#A0C5CD', '#A2CDA0', '#CDC9A0', '#CDA4A0'])
 
+  // Show the bars
+  svg.append("g")
+    .selectAll("g")
+    // Enter in data = loop group per group
+    .data(methodMetrics)
+    .enter()
+    .append("g")
+    .attr("transform", function (d) {
+      return "translate(" + x(d.methodName) + ",0)";
+    })
+    .selectAll("rect")
+    .data(function (d) {
+      return metricSubGroups.map(function (key) { return { key: key, value: d[key] }; });
+    })
+    .enter().append("rect")
+    .attr("x", function (d) {
+      return xSubgroup(d.key);
+    })
+    .attr("y", function (d) { return y(d.value); })
+    .attr("width", xSubgroup.bandwidth())
+    .attr("height", function (d) { return height - y(d.value); })
+    .attr("fill", function (d) { return color(d.key); });
 }
 
 function createCenterLinks(data) {
