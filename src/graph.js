@@ -64,8 +64,6 @@ function createNetwork(data) {
 
   // Three function that change the tooltip when user hover / move / leave a cell
   var mouseover = function (d) {
-    // console.log(d3.mouse(this));
-    // console.log(this);
     Tooltip
       .html('<u>' + d.className + '</u>')
       .style("left", (d3.mouse(this)[0] + 10) + "px")
@@ -128,18 +126,23 @@ function createNetwork(data) {
 }
 
 function createHorizontalBarChart(classData) {
-  var methodMetrics = classData.methodMetrics;
+  $("#noMethodAlert").hide();
   $("#modalLongTitle").html("Method Metrics for " + classData.className + ".java");
   $(".chart").empty();
+
+  var methodMetrics = classData.methodMetrics;
+  if (methodMetrics === undefined || methodMetrics.length == 0) {
+    $("#noMethodAlert").show();
+  }
 
   var data = transformBarChartData(methodMetrics);
 
   var chartWidth = 700,
     barHeight = 20,
     groupHeight = barHeight * data.series.length,
-    gapBetweenGroups = 10,
+    gapBetweenGroups = 15,
     spaceForLabels = 150,
-    spaceForLegend = 150;
+    spaceForLegend = 200;
 
   // Zip the series data together (first values, second values, etc.)
   var zippedData = [];
@@ -184,7 +187,8 @@ function createHorizontalBarChart(classData) {
 
   // Add text label in bar
   bar.append("text")
-    .attr("x", function (d) { return x(d) - 3; })
+    .attr("class", "bar-value")
+    .attr("x", function (d) { return x(d) + 5; })
     .attr("y", barHeight / 2)
     .attr("fill", "red")
     .attr("dy", ".35em")
@@ -196,6 +200,7 @@ function createHorizontalBarChart(classData) {
     .attr("x", function (d) { return - 10; })
     .attr("y", groupHeight / 2)
     .attr("dy", ".35em")
+    .attr("fill", "blue")
     .text(function (d, i) {
       if (i % data.series.length === 0)
         return data.labels[Math.floor(i / data.series.length)];
@@ -219,7 +224,7 @@ function createHorizontalBarChart(classData) {
     .attr('transform', function (d, i) {
       var height = legendRectSize + legendSpacing;
       var offset = -gapBetweenGroups / 2;
-      var horz = spaceForLabels + chartWidth + 40 - legendRectSize;
+      var horz = spaceForLabels + chartWidth + 70 - legendRectSize;
       var vert = i * height - offset;
       return 'translate(' + horz + ',' + vert + ')';
     });
@@ -244,17 +249,17 @@ function transformBarChartData(methodMetrics) {
 
   var series = [];
   var numLinesValues = methodMetrics.map(method => method.numLines);
-  series.push({ "label" : "numLines", "values" : numLinesValues});
+  series.push({ "label": "numLines", "values": numLinesValues });
 
   var numParamsValues = methodMetrics.map(method => method.numParams);
-  series.push({ "label" : "numParams", "values" : numParamsValues});
+  series.push({ "label": "numParams", "values": numParamsValues });
 
   var maxNestedDepthValues = methodMetrics.map(method => method.maxNestedDepth);
-  series.push({ "label" : "maxNestedDepth", "values" : maxNestedDepthValues});
+  series.push({ "label": "maxNestedDepth", "values": maxNestedDepthValues });
 
   var lawOfDemeterValues = methodMetrics.map(method => method.lawOfDemeter);
-  series.push({ "label" : "LawOfDemeter", "values" : lawOfDemeterValues});
-  
+  series.push({ "label": "LawOfDemeter", "values": lawOfDemeterValues });
+
   data.series = series;
   return data;
 }

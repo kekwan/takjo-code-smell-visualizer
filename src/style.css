@@ -14,18 +14,25 @@
   font: 14px sans-serif;
   text-anchor: start;
   font-size: 12px;
+  opacity: 1;
 }
 
 .chart text {
   fill: white;
   font: 10px sans-serif;
-  text-anchor: end;
+  opacity: 0;
+}
+
+.chart .bar-value {
+  fill: black;
+  opacity: 1;
 }
 
 .chart .label {
   fill: black;
   font: 14px sans-serif;
   text-anchor: end;
+  opacity: 1;
 }
 
 .bar:hover {
