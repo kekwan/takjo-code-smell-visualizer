@@ -1,33 +1,21 @@
-import * as fs from 'fs'
-import * as na from "./NestingAnalyzer.js"
+import * as ut from './Utils.js';
 
 export class LinesAnalyzer {
     relativePath = "../input/";
-    // key is string fileName.java, value is a string which is file content;
     classMap = new Map();
 
-    run(obj) {
-        this.loadJavaFiles(this.relativePath);
-        this.readFiles(obj);
+    run(obj, map) {
+        this.classMap = map;
+        obj = this.readFiles(obj);
         return obj;
     }
 
-    loadJavaFiles() {
-        let files = fs.readdirSync(this.relativePath);
-        for (let file of files) {
-            let extension = file.split(".").pop();
-            if (fs.statSync(this.relativePath + file).isFile() && extension === 'java') {
-                let fileData = fs.readFileSync(this.relativePath + file, 'utf8');
-                this.classMap.set(file, fileData);
-            } else if (fs.statSync(this.relativePath + file).isDirectory()) {
-                this.loadJavaFiles(this.relativePath + file + '/');
-            }
-        }
-        console.log(this.classMap.keys())
-    }
-
     readFiles(obj) {
+        let util = new ut.Utils();
+        let attributes = null;
+
         for (let className of this.classMap.keys()) {
+            let cname = className.split('.')[0];
             let content = this.classMap.get(className);
             const lines = content.split(/\r\n|\n/);
             
@@ -43,13 +31,16 @@ export class LinesAnalyzer {
                     let methodName = this.getMethodName(line);
                     let methodLines = this.getNumberOfLines(methodCode);
                     let methodParameters = this.getMethodParameters(methodCode).length;
-                    console.log("This Method", methodName, "has this number of lines", methodLines);
-                    console.log("This Method", methodName, "has this number of parameters", methodParameters);
+                    attributes = {"numLines": methodLines};
+                    obj = util.updateMethodMetric(obj, cname, methodName, attributes);
+                    attributes = {"numParams": methodParameters};
+                    obj = util.updateMethodMetric(obj, cname, methodName, attributes);
                 }
             }
-            console.log("linesAnalyzer's has this many class Lines", classLines.length);
-            console.log("linesAnalyzer's has this many class Methods", classMethods);
+            let size = classLines.length * classMethods;
+            obj = util.updateClassMetric(obj, cname, size);
         }
+        return obj;
     }
 
     isMethod(line) {
