@@ -7,13 +7,12 @@ export class Utils {
     /**
      * Loader method, call this in Program.js in main() function
      * loads the java files and populates the data obj
-     * @param obj : Object the dataObject
-     * @param map : Map<string, string> classMap refer to loadJavaFiles() docs to read on key, value pair info
      */
-    load(obj, map) {
-        obj = {"data": []};
-        map = this.loadJavaFiles();
+    load() {
+        let obj = {"data": []};
+        let map = this.loadJavaFiles();
         this.populateObj(obj);
+        return [obj, map];
     }
 
     /**
