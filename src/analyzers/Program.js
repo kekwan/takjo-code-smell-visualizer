@@ -1,3 +1,4 @@
+import * as da from './DemeterAnalyzer.js'
 import * as la from './LinesAnalyzer.js'
 import * as na from './NestingAnalyzer.js'
 import * as ut from './Utils.js'
@@ -21,6 +22,9 @@ export class Program {
 
         let linesAnalyzer = new la.LinesAnalyzer();
         this.obj = linesAnalyzer.run(this.obj, this.classMap);
+
+        let demeterAnalyzer = new da.DemeterAnalyzer();
+        this.obj = demeterAnalyzer.run(this.obj, this.classMap);
 
        // console.log(this.obj.data[0]);
        // console.log(this.obj.data[1]);

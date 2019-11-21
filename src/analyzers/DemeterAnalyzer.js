@@ -1,38 +1,21 @@
-import * as fs from 'fs'
-import * as utils from './Utils.js'
+import * as ut from "./Utils";
 
 export class DemeterAnalyzer{
     relativePath = "../input/";
     // key is string fileName.java, value is a string which is file content;
     classMap = new Map();
 
-    run(obj) {
-        this.loadJavaFiles(this.relativePath);
-        this.readFiles(obj);
+    run(obj, map) {
+        this.classMap = map;
+        obj = this.lawOfDemeterCheck(obj);
         return obj;
     }
-
-    // load java files in path and store it to classMap
-    loadJavaFiles() {
-        let files = fs.readdirSync(this.relativePath);
-        for (let file of files) {
-            let extension = file.split(".").pop();
-            if (fs.statSync(this.relativePath + file).isFile() && extension === 'java') {
-                let fileData = fs.readFileSync(this.relativePath + file, 'utf8');
-                this.classMap.set(file, fileData);
-            } else if (fs.statSync(this.relativePath + file).isDirectory()) {
-                this.loadJavaFiles(this.relativePath + file + '/');
-            }
-        }
-        console.log(this.classMap.keys())
-    }
-
 
     // Read files and check if they violate demeter
     // code similar to readFiles but instead of checking for for-loop
     // we check for
     lawOfDemeterCheck(obj) {
-        let numViolations = 0;
+        let util = new ut.Utils();
         for (let className of this.classMap.keys()) {
             let content = this.classMap.get(className);
             const lines = content.split(/\r\n|\n/);
@@ -41,8 +24,9 @@ export class DemeterAnalyzer{
                 if (this.isMethod(line)) {
                     let methodCode = this.getMethod(lines, i);
                     let methodName = this.getMethodName(line);
-                    if (this.violatesLawOfDemeter(methodCode)) {
-                        utils.updateMethodMetric(obj, className, methodName, {"lawOfDemeter": 1});
+                    let violations = this.violatesLawOfDemeter(methodCode);
+                    if (violations != 0) {
+                        util.updateMethodMetric(obj, className, methodName, {"lawOfDemeter": violations});
                     }
                 }
             }
@@ -50,6 +34,7 @@ export class DemeterAnalyzer{
     }
 
     violatesLawOfDemeter(methodCode) {
+        let res = 0;
         const lines = methodCode.split(/\r\n|\n/);
         for (let i = 0; i < lines.length; i++) {
             let line = lines[i].trim().split(".");
@@ -60,7 +45,7 @@ export class DemeterAnalyzer{
                     // Only a violation if we see parens, cuz it's methodCall().methodCall()
                     if (line[i].match(/\w+[(](\w*[,\w])*[)]/g).length > 0 &&
                         line[i-1].match(/\w+[(](\w*[,\w])*[)]/g).length > 0) {
-                        return true;
+                        res++;
                     }
                 }
             }
