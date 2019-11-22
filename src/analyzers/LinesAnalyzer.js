@@ -25,10 +25,10 @@ export class LinesAnalyzer {
             let classLines = classCode.split(/\r\n|\n/);
             for (let i = 0; i < classLines.length; i++) {
                 let line = classLines[i].trim();
-                if (this.isMethod(line)) {
+                if (util.isMethod(line)) {
                     classMethods++;
-                    let methodCode = this.getMethod(classLines, i);
-                    let methodName = this.getMethodName(line);
+                    let methodCode = util.getMethod(classLines, i);
+                    let methodName = util.getMethodName(line);
                     let methodLines = this.getNumberOfLines(methodCode);
                     let methodParameters = this.getMethodParameters(methodCode).length;
                     attributes = {"numLines": methodLines};
@@ -43,44 +43,12 @@ export class LinesAnalyzer {
         return obj;
     }
 
-    isMethod(line) {
-        let visibility = ['public', 'private', 'protected'];
-        let keywords = ['class', 'abstract', 'interface', 'enum'];
-        let strArray = line.split(" ");
-        if (strArray.length > 2) {
-            return visibility.includes(strArray[0]) && !keywords.includes(strArray[1]) && line[line.length - 1] !== ";";
-        }
-        return false;
-    }
-
-    getMethod(lines, index) {
-        let methodContent = '';
-        for (let i = index; i < lines.length; i++){
-            let line = lines[i].trim();
-            if (this.isMethod(line) && i !== index) {
-                return methodContent;
-            } else {
-                if (!line.includes("@Override"))
-                    methodContent += line + '\n';
-            }
-        }
-        return methodContent.trim();
-    }
-
-    isClass(line) {
-        let visibility = ['public', 'private', 'protected'];
-        let strArray = line.split(" ");
-        if (strArray.length > 2) {
-            return visibility.includes(strArray[0]) && strArray[1] === 'class';
-        }
-        return false;
-    }
-
     getClass(lines, index) {
         let classContent = '';
+        let util = new ut.Utils();
         for (let i = index; i < lines.length; i++){
             let line = lines[i].trim();
-            if (this.isClass(line) && i !== index) {
+            if (util.isClass(line) && i !== index) {
                 return classContent;
             } else {
                 classContent += line + '\n';
@@ -90,20 +58,13 @@ export class LinesAnalyzer {
     }
 
     getClassCode(lines) {
+        let util = new ut.Utils();
         for (let i = 0; i < lines.length; i++) {
             let line = lines[i].trim();
-            if (this.isClass(line)) {
+            if (util.isClass(line)) {
                 let classCode = this.getClass(lines, i);
                 return classCode;
             }
-        }
-    }
-
-    getMethodName(line) {
-        let strArray = line.split(" ");
-        for (let str of strArray) {
-            if (str.includes('('))
-                return str.split('(')[0];
         }
     }
 

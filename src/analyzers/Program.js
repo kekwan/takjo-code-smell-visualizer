@@ -1,7 +1,7 @@
 import * as da from './DemeterAnalyzer.js'
 import * as la from './LinesAnalyzer.js'
 import * as na from './NestingAnalyzer.js'
-import * as uma from './UnusedMethods.js'
+import * as uma from './UnusedMethodsAnalyzer.js'
 import * as ut from './Utils.js'
 import * as fs from 'fs';
 
@@ -10,7 +10,7 @@ export class Program {
     obj = {"data":[]};
     classMap = new Map();
     // path to save to
-    relativePath = "../scripts/metrics/test" + Date.now() +".json";
+    relativePath = "../metrics/test" + Date.now() +".json";
     main() {
     let test = new ut.Utils();
     let res = test.load();
@@ -27,15 +27,13 @@ export class Program {
         let demeterAnalyzer = new da.DemeterAnalyzer();
         this.obj = demeterAnalyzer.run(this.obj, this.classMap);
 
-        let unusedMethodsAnalyzer = new uma.UnusedMethods();
+        let unusedMethodsAnalyzer = new uma.UnusedMethodsAnalyzer();
         this.obj = unusedMethodsAnalyzer.run(this.obj, this.classMap);
 
-       // console.log(this.obj.data[0]);
-       // console.log(this.obj.data[1]);
         // todo use fs-extra to ensuredir
         fs.writeFileSync(this.relativePath, JSON.stringify(this.obj, null, '\t'));
     }
 }
 
-let test = new Program();
-test.main();
+let run = new Program();
+run.main();

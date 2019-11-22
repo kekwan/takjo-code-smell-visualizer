@@ -8,7 +8,7 @@
 
 import * as ut from './Utils.js';
 
-export class UnusedMethods {
+export class UnusedMethodsAnalyzer {
 	relativePath = "../input/";
     classMap = new Map();
 	/**
@@ -21,7 +21,7 @@ export class UnusedMethods {
 	 *   }
 	 * }
 	 */
-	store = {}
+	store = {};
 
 	// Modifies the shared JSON Object. Makes a Slice/Map of Unused methods in each class.
 	// Goes through the JSON Object and modifies it if necessary
@@ -31,38 +31,6 @@ export class UnusedMethods {
         return obj;
 	}
 
-	isMethod(line) {
-        let visibility = ['public', 'private', 'protected'];
-        let keywords = ['class', 'abstract', 'interface', 'enum'];
-        let strArray = line.split(" ");
-        if (strArray.length > 2) {
-            return visibility.includes(strArray[0]) && !keywords.includes(strArray[1]) && line[line.length - 1] !== ";";
-        }
-        return false;
-	}
-	
-	getMethodName(line) {
-        let strArray = line.split(" ");
-        for (let str of strArray) {
-            if (str.includes('('))
-                return str.split('(')[0];
-        }
-    }
-
-    getMethod(lines, index) {
-        let methodContent = '';
-        for (let i = index; i < lines.length; i++){
-            let line = lines[i].trim();
-            if (this.isMethod(line) && i !== index) {
-                return methodContent;
-            } else {
-                if (!line.includes("@Override"))
-                    methodContent += line + '\n';
-            }
-        }
-        return methodContent.trim();
-    }
-	
 	unusedMethodsCheck(obj) {
         let util = new ut.Utils();
         for (let className of this.classMap.keys()) {
@@ -77,9 +45,9 @@ export class UnusedMethods {
             const lines = content.split(/\r\n|\n/);
             for (let i = 0; i < lines.length; i++) {
                 let line = lines[i].trim();
-                if (this.isMethod(line)) {
-                    let methodCode = this.getMethod(lines, i);
-                    let methodName = this.getMethodName(line);
+                if (util.isMethod(line)) {
+                    let methodCode = util.getMethod(lines, i);
+                    let methodName = util.getMethodName(line);
 					
 					// All methods are currently unused
 					this.store[className]["methods"][methodName] = false;

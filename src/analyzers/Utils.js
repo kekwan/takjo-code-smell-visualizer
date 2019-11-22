@@ -107,6 +107,69 @@ export class Utils {
         }
     }
 
+    // return 0 if there's no curly brackets on this line
+    // return 1 if there's an '{' on this line
+    // return -1 if there's an '}' on this line
+    isBracket(line) {
+        let tokenizedLine = line.split(" ");
+        let result = [];
+        for (let letter of tokenizedLine) {
+            if (letter === '{') {
+                result.push(1);
+            } else  if (letter === '}') {
+                result.push(-1)
+            }
+        }
+        return result;
+    }
+
+    // returns true if this line declares a class
+    isClass(line) {
+        let visibility = ['public', 'private', 'protected'];
+        let strArray = line.split(" ");
+        if (strArray.length > 2) {
+            return visibility.includes(strArray[0]) && strArray[1] === 'class';
+        }
+        return false;
+    }
+
+    // gets the methodName on this line
+    getMethodName(line) {
+        let strArray = line.split(" ");
+        for (let str of strArray) {
+            if (str.includes('('))
+                return str.split('(')[0];
+        }
+    }
+
+
+    // true if this line is a method definition
+    // false otherwise
+    isMethod(line) {
+        let visibility = ['public', 'private', 'protected'];
+        let keywords = ['class', 'abstract', 'interface', 'enum'];
+        let strArray = line.split(" ");
+        if (strArray.length > 2) {
+            return visibility.includes(strArray[0]) && !keywords.includes(strArray[1]) && line[line.length - 1] !== ";";
+        }
+        return false;
+    }
+
+    // gets the content (code) of the method
+    getMethod(lines, index) {
+        let methodContent = '';
+        for (let i = index; i < lines.length; i++){
+            let line = lines[i].trim();
+            if (this.isMethod(line) && i !== index) {
+                return methodContent;
+            } else {
+                if (!line.includes("@Override"))
+                    methodContent += line + '\n';
+            }
+        }
+        return methodContent.trim();
+    }
+
     // helper
     getMetricArray(data, className){
         let index = data.findIndex(function (methodObj) {
@@ -115,9 +178,3 @@ export class Utils {
         return data[index].methodMetrics;
     }
 }
-
-
-let test = new Utils();
-let obj;
-let map;
-test.load(obj, map);

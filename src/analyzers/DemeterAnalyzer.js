@@ -18,9 +18,9 @@ export class DemeterAnalyzer{
             const lines = content.split(/\r\n|\n/);
             for (let i = 0; i < lines.length; i++) {
                 let line = lines[i].trim();
-                if (this.isMethod(line)) {
-                    let methodCode = this.getMethod(lines, i);
-                    let methodName = this.getMethodName(line);
+                if (util.isMethod(line)) {
+                    let methodCode = util.getMethod(lines, i);
+                    let methodName = util.getMethodName(line);
                     let violations = this.violatesLawOfDemeter(methodCode);
                     if (violations !== 0) {
                         obj = util.updateMethodMetric(obj, className, methodName, {"numLawOfDemeterViolations": violations});
@@ -51,42 +51,5 @@ export class DemeterAnalyzer{
             }
         }
         return res;
-    }
-
-    // true if this line is a method definition
-    // false otherwise
-    isMethod(line) {
-        let visibility = ['public', 'private', 'protected'];
-        let keywords = ['class', 'abstract', 'interface', 'enum'];
-        let strArray = line.split(" ");
-        if (strArray.length > 2) {
-            return visibility.includes(strArray[0]) && !keywords.includes(strArray[1]) && line[line.length - 1] !== ";";
-        }
-        return false;
-    }
-
-    // gets the content (code) of the method
-    getMethod(lines, index) {
-        let methodContent = '';
-        for (let i = index; i < lines.length; i++){
-            let line = lines[i].trim();
-            if (this.isMethod(line) && i !== index) {
-                return methodContent;
-            } else {
-                if (!line.includes("@Override"))
-                    methodContent += line + '\n';
-            }
-        }
-        return methodContent.trim();
-    }
-
-
-    // gets the methodName on this line
-    getMethodName(line) {
-        let strArray = line.split(" ");
-        for (let str of strArray) {
-            if (str.includes('('))
-                return str.split('(')[0];
-        }
     }
 }
