@@ -64,10 +64,11 @@ function createNetwork(data) {
 
   // Three function that change the tooltip when user hover / move / leave a cell
   var mouseover = function (d) {
+    console.log("mouse");
     Tooltip
       .html('<u>' + d.className + '</u>')
-      .style("left", (d3.mouse(this)[0] + 10) + "px")
-      .style("top", (d3.mouse(this)[1]) + "px")
+      .style("left", (d3.event.pageX + 5) + "px")
+      .style("top", (d3.event.pageY - 5) + "px")
       .style("opacity", 1)
       .style("visibility", "visible")
   }

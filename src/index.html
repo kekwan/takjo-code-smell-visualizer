@@ -24,28 +24,36 @@
 <!-- Create a div where the graph will take place -->
 
 <body>
-    <div id="network_graph"></div>
-    <div id="info_chart">
-        <!-- Modal -->
-        <div class="modal fade show in" id="modalCharts" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalLongTitle">Method Metrics</h5>
-                    </div>
-                    <div class="modal-body">
-                        <svg class="chart" id="metrics_chart"></svg>
-                        <div class="alert alert-warning hide" id="noMethodAlert" role="alert">No methods exist for this
-                            class.</div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Code Smell Visualizer</h1>
+            <p class="lead">How smelly is your code ?</p>
+            <div id="network_graph"></div>
+            <div id="info_chart">
+                <!-- Modal -->
+                <div class="modal fade show in" id="modalCharts" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-xl" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalLongTitle">Method Metrics</h5>
+                            </div>
+                            <div class="modal-body">
+                                <svg class="chart" id="metrics_chart"></svg>
+                                <div class="alert alert-warning hide" id="noMethodAlert" role="alert">No methods exist
+                                    for this
+                                    class.</div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 </body>
 
 <script>

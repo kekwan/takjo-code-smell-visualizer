@@ -45,3 +45,8 @@
   stroke: #000;
   shape-rendering: crispEdges;
 }
+
+#network_graph {
+  display: block;
+  margin: auto;
+}
