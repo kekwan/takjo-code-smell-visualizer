@@ -114,8 +114,7 @@ export class UnusedMethods {
 		for (let className of this.classMap.keys()) {
 			let methodsObj = this.store[className]["methods"]
 			for (let methodName in methodsObj) {
-				let isUsed = methodsObj[methodName]
-				console.log(isUsed)
+				let isUsed = methodsObj[methodName];
 				obj = util.updateMethodMetric(obj, className.split('.')[0], methodName, {"isUnused": !isUsed});
 			}
 		}
