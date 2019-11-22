@@ -20,7 +20,7 @@ function createNetwork(data) {
   var color = function (d) {
     // Center Neutral Node
     if (!d.hasOwnProperty("codeSmellScore")) {
-      return "#F8F8F8";
+      return "#423F3F";
       // Red Nodes
     } else if (d.codeSmellScore > 50) {
       return "#D85858";
@@ -43,6 +43,9 @@ function createNetwork(data) {
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
+    .attr("class", "rounded")
+    .attr("class", "border border-secondary")
+    .style("border-radius", "30px")
     .append("g")
     .attr("transform",
       "translate(" + 0 + "," + 0 + ")");
