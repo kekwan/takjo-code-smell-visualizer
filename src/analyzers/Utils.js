@@ -63,6 +63,9 @@ export class Utils {
      * @returns a new data object, assign the previous one with this value
      */
     updateClassMetric(obj, className, size) {
+        if (className.includes('.java')) {
+            className = className.split('.')[0];
+        }
         let index = obj.data.findIndex(function (classObj) {
             return classObj.className === className;
         });
@@ -79,6 +82,9 @@ export class Utils {
      * @returns a new data object, assign the previous one with this value
      */
     updateMethodMetric(obj, className, methodName, attributes) {
+        if (className.includes('.java')) {
+            className = className.split('.')[0];
+        }
         let updateIndex = obj.data.findIndex(function (classObj) {
             return classObj.className === className;
         });
