@@ -1,34 +1,24 @@
 import * as fs from 'fs'
+import * as ut from './Utils.js';
+
 export class NestingAnalyzer {
     relativePath = "../input/";
-    // key is string fileName.java, value is a string which is file content;
     classMap = new Map();
 
-     run(obj) {
-        this.loadJavaFiles(this.relativePath);
-        this.readFiles(obj);
-        return obj;
-    }
 
-    // load java files in path and store it to classMap
-    loadJavaFiles() {
-        let files = fs.readdirSync(this.relativePath);
-        for (let file of files) {
-            let extension = file.split(".").pop();
-            if (fs.statSync(this.relativePath + file).isFile() && extension === 'java') {
-                let fileData = fs.readFileSync(this.relativePath + file, 'utf8');
-                this.classMap.set(file, fileData);
-            } else if (fs.statSync(this.relativePath + file).isDirectory()) {
-                this.loadJavaFiles(this.relativePath + file + '/');
-            }
-        }
-        console.log(this.classMap.keys())
+    run(obj, map) {
+        this.classMap = map;
+        obj = this.readFiles(obj);
+        return obj;
     }
 
     // read all files in classMap and calls
     // the appropriate analyzer based on keyword if or for
     readFiles(obj) {
+        let util = new ut.Utils();
         for (let className of this.classMap.keys()) {
+            let cname = className.split('.')[0];
+            let attributes = null;
             let content = this.classMap.get(className);
             const lines = content.split(/\r\n|\n/);
             for (let i = 0; i < lines.length; i++) {
@@ -37,11 +27,17 @@ export class NestingAnalyzer {
                     let methodCode = this.getMethod(lines, i);
                     let methodName = this.getMethodName(line);
                     if (this.hasForLoop(methodCode)) {
-                        this.loopAnalyzer(methodCode);
+                        let depthCount = this.loopAnalyzer(methodCode);
+                        attributes = {"maxNestedDepth": depthCount};
+                        obj = util.updateMethodMetric(obj, cname, methodName, attributes);
+                    } else {
+                        attributes = {"maxNestedDepth": 0};
+                        obj = util.updateMethodMetric(obj, cname, methodName, attributes);
                     }
                 }
             }
         }
+        return obj;
     }
 
     loopAnalyzer(methodCode) {
@@ -52,8 +48,10 @@ export class NestingAnalyzer {
             if (this.isForLoop(line)){
                 let res = this.loopAnalyzerHelper(lines, i);
                 i = res[0];
+                depthCount = res[1];
             }
         }
+        return depthCount;
     }
 
     loopAnalyzerHelper(lines, index) {
@@ -86,7 +84,7 @@ export class NestingAnalyzer {
 
             count = i;
         }
-        console.log(maxDepthCount);
+      //  console.log(maxDepthCount);
     //    console.log(depthCount);
         return [count, depthCount];
     }
@@ -138,7 +136,11 @@ export class NestingAnalyzer {
 
     // determines if this line contains an if statement
     isIfStatement(line) {
-        // todo
+        let strArray = line.split(" ");
+        if (strArray.length > 0) {
+            return strArray[0] === 'if';
+        }
+        return false;
     }
 
     // true if this line is a method definition
