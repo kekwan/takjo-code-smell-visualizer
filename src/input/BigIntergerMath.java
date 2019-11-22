@@ -74,10 +74,6 @@ public class BigIntegerMath {
   /** Returns {@code true} if {@code x} represents a power of two. */
   public static boolean isPowerOfTwo(BigInteger x) {
     checkNotNull(x);
-    checkNotNull(x).checkIsNull(y).check().check();
-    checkNotNull(s).chec();
-    lsdjks().alsjdhl()
-    alsdjasl().length
     return x.signum() > 0 && x.getLowestSetBit() == x.bitLength() - 1;
   }
 
