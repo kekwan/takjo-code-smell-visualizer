@@ -1,7 +1,8 @@
-#code-smell-visualizer
-##Set up
-git clone this repository
+# code-smell-visualizer
 
-yarn install to install dependencies
+## Set up
+`git clone` this repository
 
-yarn start to start a http server serving the files, then in a browser go to http://127.0.0.1:9001 to access the UI
+`yarn install` to install dependencies
+
+`yarn start` to start a http server serving the files, then in a browser go to http://127.0.0.1:9001 to access the UI
