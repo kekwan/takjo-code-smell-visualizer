@@ -142,6 +142,150 @@
                     "lawOfDemeter": 2
                 }
             ]
+        },
+        {
+            "id": 8,
+            "className": "Employee",
+            "classSize": 1000,
+            "codeSmellScore": 150,
+            "methodMetrics": [
+                {
+                    "methodName": "work",
+                    "numLines": 3,
+                    "numParams": 2,
+                    "isUnused": false,
+                    "maxNestedDepth": 1,
+                    "lawOfDemeter": 9
+                },
+                {
+                    "methodName": "handleTransaction",
+                    "numLines": 20,
+                    "numParams": 1,
+                    "isUnused": true,
+                    "maxNestedDepth": 12,
+                    "lawOfDemeter": 2
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "className": "Employee",
+            "classSize": 1000,
+            "codeSmellScore": 150,
+            "methodMetrics": [
+                {
+                    "methodName": "work",
+                    "numLines": 3,
+                    "numParams": 2,
+                    "isUnused": false,
+                    "maxNestedDepth": 1,
+                    "lawOfDemeter": 9
+                },
+                {
+                    "methodName": "handleTransaction",
+                    "numLines": 20,
+                    "numParams": 1,
+                    "isUnused": true,
+                    "maxNestedDepth": 12,
+                    "lawOfDemeter": 2
+                }
+            ]
+        }
+        ,{
+            "id": 10,
+            "className": "Employee",
+            "classSize": 1000,
+            "codeSmellScore": 150,
+            "methodMetrics": [
+                {
+                    "methodName": "work",
+                    "numLines": 3,
+                    "numParams": 2,
+                    "isUnused": false,
+                    "maxNestedDepth": 1,
+                    "lawOfDemeter": 9
+                },
+                {
+                    "methodName": "handleTransaction",
+                    "numLines": 20,
+                    "numParams": 1,
+                    "isUnused": true,
+                    "maxNestedDepth": 12,
+                    "lawOfDemeter": 2
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "className": "Employee",
+            "classSize": 1000,
+            "codeSmellScore": 150,
+            "methodMetrics": [
+                {
+                    "methodName": "work",
+                    "numLines": 3,
+                    "numParams": 2,
+                    "isUnused": false,
+                    "maxNestedDepth": 1,
+                    "lawOfDemeter": 9
+                },
+                {
+                    "methodName": "handleTransaction",
+                    "numLines": 20,
+                    "numParams": 1,
+                    "isUnused": true,
+                    "maxNestedDepth": 12,
+                    "lawOfDemeter": 2
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "className": "Employee",
+            "classSize": 1000,
+            "codeSmellScore": 150,
+            "methodMetrics": [
+                {
+                    "methodName": "work",
+                    "numLines": 3,
+                    "numParams": 2,
+                    "isUnused": false,
+                    "maxNestedDepth": 1,
+                    "lawOfDemeter": 9
+                },
+                {
+                    "methodName": "handleTransaction",
+                    "numLines": 20,
+                    "numParams": 1,
+                    "isUnused": true,
+                    "maxNestedDepth": 12,
+                    "lawOfDemeter": 2
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "className": "Employee",
+            "classSize": 1000,
+            "codeSmellScore": 150,
+            "methodMetrics": [
+                {
+                    "methodName": "work",
+                    "numLines": 3,
+                    "numParams": 2,
+                    "isUnused": false,
+                    "maxNestedDepth": 1,
+                    "lawOfDemeter": 9
+                },
+                {
+                    "methodName": "handleTransaction",
+                    "numLines": 20,
+                    "numParams": 1,
+                    "isUnused": true,
+                    "maxNestedDepth": 12,
+                    "lawOfDemeter": 2
+                }
+            ]
         }
     ]
 }

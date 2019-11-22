@@ -50,3 +50,33 @@
   display: block;
   margin: auto;
 }
+
+.jumbotron {
+  background-color : #2e3140 !important;
+}
+
+.jumbotron h1 {
+  color: white;
+}
+
+.jumbotron p {
+  color: white;
+}
+
+#buttonGroup {
+  display:grid;
+  justify-content: flex-end;
+  margin-top: -120px;
+}
+
+#redButton {
+  background-color: #D85858 !important;
+}
+
+#yellowButton {
+  background-color: #D8D258 !important;
+}
+
+#greenButton {
+  background-color: #83D858 !important;
+}

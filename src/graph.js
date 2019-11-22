@@ -13,30 +13,30 @@ function createNetwork(data) {
 
   // set the dimensions and margins of the graph
   var margin = { top: 10, right: 30, bottom: 30, left: 40 },
-    width = 1000 - margin.left - margin.right,
-    height = 800 - margin.top - margin.bottom;
+    width = 1200 - margin.left - margin.right,
+    height = 1000 - margin.top - margin.bottom;
 
   // Color palette for nodes
   var color = function (d) {
     // Center Neutral Node
     if (!d.hasOwnProperty("codeSmellScore")) {
-      return "#858585";
+      return "#F8F8F8";
       // Red Nodes
     } else if (d.codeSmellScore > 50) {
-      return "#F96969";
+      return "#D85858";
       // Yellow Nodes
     } else if (d.codeSmellScore > 30) {
-      return "#F9F069";
+      return "#D8D258";
       // Green Nodes
     } else {
-      return "#99F969";
+      return "#83D858";
     }
   }
 
   // Size scale for countries
   var size = d3.scaleLinear()
     .domain([0, 5000])
-    .range([15, 55])  // circle will be between 15 and 120 px wide
+    .range([10, 35])  // circle will be between 15 and 120 px wide
 
   // append the svg object to the body of the page
   var svg = d3.select("#network_graph")
@@ -45,7 +45,7 @@ function createNetwork(data) {
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform",
-      "translate(" + margin.left + "," + margin.top + ")");
+      "translate(" + 0 + "," + 0 + ")");
 
   // create a tooltip
   var Tooltip = d3.select("#network_graph")
@@ -64,13 +64,14 @@ function createNetwork(data) {
 
   // Three function that change the tooltip when user hover / move / leave a cell
   var mouseover = function (d) {
-    console.log("mouse");
-    Tooltip
-      .html('<u>' + d.className + '</u>')
-      .style("left", (d3.event.pageX + 5) + "px")
-      .style("top", (d3.event.pageY - 5) + "px")
-      .style("opacity", 1)
-      .style("visibility", "visible")
+    if (d.className != null) {
+      Tooltip
+        .html('<u>' + d.className + '</u>')
+        .style("left", (d3.event.pageX + 5) + "px")
+        .style("top", (d3.event.pageY - 5) + "px")
+        .style("opacity", 1)
+        .style("visibility", "visible")
+    }
   }
 
   var mouseleave = function (d) {
@@ -110,6 +111,8 @@ function createNetwork(data) {
     )
     .force("charge", d3.forceManyBody().strength(-4000))         // This adds repulsion between nodes. Play with the -400 for the repulsion strength
     .force("center", d3.forceCenter(width / 2, height / 2))     // This force attracts nodes to the center of the svg area
+    .force("x", d3.forceX(width / 2))
+    .force("y", d3.forceY(height / 2))
     .on("end", ticked);
 
   // This function is run at each iteration of the force algorithm, updating the nodes position.
@@ -143,7 +146,7 @@ function createHorizontalBarChart(classData) {
     groupHeight = barHeight * data.series.length,
     gapBetweenGroups = 15,
     spaceForLabels = 150,
-    spaceForLegend = 200;
+    spaceForLegend = 220;
 
   // Zip the series data together (first values, second values, etc.)
   var zippedData = [];
@@ -250,16 +253,16 @@ function transformBarChartData(methodMetrics) {
 
   var series = [];
   var numLinesValues = methodMetrics.map(method => method.numLines);
-  series.push({ "label": "numLines", "values": numLinesValues });
+  series.push({ "label": "# Lines", "values": numLinesValues });
 
   var numParamsValues = methodMetrics.map(method => method.numParams);
-  series.push({ "label": "numParams", "values": numParamsValues });
+  series.push({ "label": "# of Params", "values": numParamsValues });
 
   var maxNestedDepthValues = methodMetrics.map(method => method.maxNestedDepth);
-  series.push({ "label": "maxNestedDepth", "values": maxNestedDepthValues });
+  series.push({ "label": "Max Nested Depth", "values": maxNestedDepthValues });
 
   var lawOfDemeterValues = methodMetrics.map(method => method.lawOfDemeter);
-  series.push({ "label": "LawOfDemeter", "values": lawOfDemeterValues });
+  series.push({ "label": "Law of Demeter Violations", "values": lawOfDemeterValues });
 
   data.series = series;
   return data;
