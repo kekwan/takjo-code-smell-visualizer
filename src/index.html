@@ -1,19 +1,68 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
 
-<!-- Load d3.js -->
-<script src="https://d3js.org/d3.v4.js"></script>
-<!-- Color palette -->
-<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-
+<head>
+    <meta charset="utf-8">
+    <!-- Load d3.js -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <!-- Color palette -->
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3-queue.v3.min.js"></script>
+    <script type="text/javascript" src="graph.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</head>
 <!-- Create a div where the graph will take place -->
-<div id="my_dataviz"></div>
 
-<style>
-    .node:hover {
-        stroke-width: 7px !important;
-        opacity: 1 !important;
-    }
-</style>
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Code Smell Visualizer</h1>
+            <p class="lead">Say No To Stinky Code</p>
+            <div class="btn-group-vertical" id="buttonGroup">
+                <button type="button" class="btn btn-secondary" id="greenButton">Good</button>
+                <button type="button" class="btn btn-secondary" id="yellowButton">Average</button>
+                <button type="button" class="btn btn-secondary" id="redButton">Bad</button>
+            </div>
+            <div id="network_graph"></div>
+            <div id="info_chart">
+                <!-- Modal -->
+                <div class="modal fade show in" id="modalCharts" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-xl" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalLongTitle">Method Metrics</h5>
+                            </div>
+                            <div class="modal-body">
+                                <svg class="chart" id="metrics_chart"></svg>
+                                <div class="alert alert-warning hide" id="noMethodAlert" role="alert">No methods exist
+                                    for this
+                                    class.</div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<script type="text/javascript" src="scripts/index.js"></script>
+</body>
+
+<script>
+    d3.queue()
+        .defer(d3.json, "metrics/mockData.json")
+        .await(create);
+</script>

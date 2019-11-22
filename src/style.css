@@ -1,0 +1,82 @@
+.link line {
+  stroke: #aaa;
+}
+
+@media (min-width: 500px) {
+  .modal-xl {
+    width: 90%;
+   max-width:1200px;
+  }
+}
+
+.chart .legend {
+  fill: black;
+  font: 14px sans-serif;
+  text-anchor: start;
+  font-size: 12px;
+  opacity: 1;
+}
+
+.chart text {
+  fill: white;
+  font: 10px sans-serif;
+  opacity: 0;
+}
+
+.chart .bar-value {
+  fill: black;
+  opacity: 1;
+}
+
+.chart .label {
+  fill: black;
+  font: 14px sans-serif;
+  text-anchor: end;
+  opacity: 1;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+#network_graph {
+  display: block;
+  margin: auto;
+}
+
+.jumbotron {
+  background-color : #2e3140 !important;
+}
+
+.jumbotron h1 {
+  color: white;
+}
+
+.jumbotron p {
+  color: white;
+}
+
+#buttonGroup {
+  display:grid;
+  justify-content: flex-end;
+  margin-top: -120px;
+}
+
+#redButton {
+  background-color: #D85858 !important;
+}
+
+#yellowButton {
+  background-color: #D8D258 !important;
+}
+
+#greenButton {
+  background-color: #83D858 !important;
+}
