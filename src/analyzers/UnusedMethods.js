@@ -116,7 +116,7 @@ export class UnusedMethods {
 			for (let methodName in methodsObj) {
 				let isUsed = methodsObj[methodName]
 				console.log(isUsed)
-				obj = util.updateMethodMetric(obj, className, methodName, {"isUnused": !isUsed});
+				obj = util.updateMethodMetric(obj, className.split('.')[0], methodName, {"isUnused": !isUsed});
 			}
 		}
 
