@@ -47,7 +47,8 @@ export class Utils {
             let classObj = {
                 "id": id,
                 "className": className.split('.')[0],
-                "classSize": null,
+                "classSize": -1,
+                "codeSmellScore": -1,
                 "methodMetrics": []
             };
             arr.push(classObj);
@@ -170,7 +171,57 @@ export class Utils {
         return methodContent.trim();
     }
 
-    // helper
+    calculateWeight(obj) {
+        let data = obj.data;
+        let goodCSize = 900;
+        let score = 0;
+        for (let classObj of data) {
+            let numOfMethods = classObj.methodMetrics.length;
+            if (numOfMethods === 0) {
+                score = 8;
+                classObj.codeSmellScore = score;
+            } else {
+            score = ((classObj.classSize) / goodCSize) + this.calculateWeightHelper(classObj.methodMetrics);
+            classObj.codeSmellScore = Math.ceil(score);
+            }
+        }
+        return obj;
+    }
+
+    calculateWeightHelper(methods) {
+        let weight = 0;
+        let numOfMethods = methods.length;
+        let badSizeCount = 0
+        let badParamCount = 0;
+        let badDepthCount = 0;
+        let badLodCount = 0;
+        let unusedCount = 0 ;
+        for (let method of methods) {
+            if (method.numLines > 30) {
+                badSizeCount++;
+            }
+            if (method.numParams > 4) {
+                badParamCount++;
+            }
+            if (method.isUnused) {
+                unusedCount++;
+            }
+            if (method.maxNestedDepth > 3) {
+                badDepthCount++;
+            }
+            if (method.lawOfDemeter > 3) {
+                badLodCount++;
+            }
+        }
+        weight = (badSizeCount / numOfMethods) * 2 +
+                 (badParamCount / numOfMethods) * 2 +
+                 (unusedCount / numOfMethods) * 2 +
+                 (badDepthCount / numOfMethods) * 4 +
+                 (badLodCount / numOfMethods) * 2;
+
+        return weight;
+    }
+        // helper
     getMetricArray(data, className){
         let index = data.findIndex(function (methodObj) {
             return methodObj.className === className;

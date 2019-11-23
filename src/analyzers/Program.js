@@ -12,8 +12,8 @@ export class Program {
     // path to save to
     relativePath = "../metrics/test" + Date.now() +".json";
     main() {
-    let test = new ut.Utils();
-    let res = test.load();
+    let util = new ut.Utils();
+    let res = util.load();
     this.obj = res[0];
     this.classMap = res[1];
 
@@ -30,6 +30,7 @@ export class Program {
         let unusedMethodsAnalyzer = new uma.UnusedMethodsAnalyzer();
         this.obj = unusedMethodsAnalyzer.run(this.obj, this.classMap);
 
+        this.obj = util.calculateWeight(this.obj);
         // todo use fs-extra to ensuredir
         fs.writeFileSync(this.relativePath, JSON.stringify(this.obj, null, '\t'));
     }
