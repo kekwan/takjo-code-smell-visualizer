@@ -21,8 +21,12 @@ export class LinesAnalyzer {
             
             let classCode = this.getClassCode(lines);
             let classMethods = 0;
-            
-            let classLines = classCode.split(/\r\n|\n/);
+            let classLines = "";
+            try {
+                classLines = classCode.split(/\r\n|\n/);
+            } catch(e) {
+                throw e;
+            }
             for (let i = 0; i < classLines.length; i++) {
                 let line = classLines[i].trim();
                 if (util.isMethod(line)) {
@@ -59,13 +63,15 @@ export class LinesAnalyzer {
 
     getClassCode(lines) {
         let util = new ut.Utils();
+        let classCode = "";
         for (let i = 0; i < lines.length; i++) {
             let line = lines[i].trim();
             if (util.isClass(line)) {
-                let classCode = this.getClass(lines, i);
+                classCode = this.getClass(lines, i);
                 return classCode;
             }
         }
+        return classCode;
     }
 
     getNumberOfLines(methodCode) {

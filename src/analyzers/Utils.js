@@ -10,7 +10,7 @@ export class Utils {
      */
     load() {
         let obj = {"data": []};
-        let map = this.loadJavaFiles();
+        let map = this.loadJavaFiles(this.relativePath);
         this.populateObj(obj);
         return [obj, map];
     }
@@ -21,15 +21,15 @@ export class Utils {
      * key: <fileName>.java
      * value: file content (code)
      */
-    loadJavaFiles() {
-        let files = fs.readdirSync(this.relativePath);
+    loadJavaFiles(path) {
+        let files = fs.readdirSync(path);
         for (let file of files) {
             let extension = file.split(".").pop();
-            if (fs.statSync(this.relativePath + file).isFile() && extension === 'java') {
-                let fileData = fs.readFileSync(this.relativePath + file, 'utf8');
+            if (fs.statSync(path + file).isFile() && extension === 'java') {
+                let fileData = fs.readFileSync(path + file, 'utf8');
                 this.classMap.set(file, fileData);
-            } else if (fs.statSync(this.relativePath + file).isDirectory()) {
-                this.loadJavaFiles(this.relativePath + file + '/');
+            } else if (fs.statSync(path + file).isDirectory()) {
+                this.loadJavaFiles(path + file + '/');
             }
         }
         return this.classMap;
