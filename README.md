@@ -7,7 +7,7 @@
 - Kenny Kwan
 - Tim Guo
 - Oscar Tu
-- Adam
+- Sadek
 
 ## About
 
@@ -28,7 +28,7 @@ The graph allows the user to easily view the overall code smell score of the cla
 * Kenny: Visualization (D3) and web-app
 * Tim: Lines Analyzer
 * Oscar: Law of Demeter Analyzer
-* Adam: Utils, Nesting Analyzer
+* Sadek: Utils, Nesting Analyzer
 * Everyone: Bugs, optimization.
 
 ## Set up
