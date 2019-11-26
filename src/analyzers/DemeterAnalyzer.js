@@ -22,9 +22,7 @@ export class DemeterAnalyzer{
                     let methodCode = util.getMethod(lines, i);
                     let methodName = util.getMethodName(line);
                     let violations = this.violatesLawOfDemeter(methodCode);
-                    if (violations !== 0) {
-                        obj = util.updateMethodMetric(obj, className, methodName, {"numLawOfDemeterViolations": violations});
-                    }
+                    obj = util.updateMethodMetric(obj, className, methodName, {"numLawOfDemeterViolations": violations});
                 }
             }
         }
