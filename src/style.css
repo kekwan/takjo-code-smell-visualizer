@@ -69,6 +69,11 @@
   color: white;
 }
 
+#unused-methods {
+  color: black;
+  font-size: 12px;
+}
+
 #buttonGroup {
   display:grid;
   justify-content: flex-end;

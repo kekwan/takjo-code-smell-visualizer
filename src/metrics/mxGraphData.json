@@ -5,6 +5,7 @@
 			"className": "StructuralException",
 			"classSize": 10,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "StructuralException",
@@ -21,6 +22,7 @@
 			"className": "mxAnalysisGraph",
 			"classSize": 2884,
 			"codeSmellScore": 4,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": [
 				{
 					"methodName": "getEdges",
@@ -125,6 +127,7 @@
 			"className": "mxConstantCostFunction",
 			"classSize": 52,
 			"codeSmellScore": 2,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "mxConstantCostFunction",
@@ -149,6 +152,7 @@
 			"className": "mxDistanceCostFunction",
 			"classSize": 27,
 			"codeSmellScore": 1,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": [
 				{
 					"methodName": "getCost",
@@ -165,6 +169,7 @@
 			"className": "mxFibonacciHeap",
 			"classSize": 10710,
 			"codeSmellScore": 14,
+			"numOfUnusedMethods": 4,
 			"methodMetrics": [
 				{
 					"methodName": "getNode",
@@ -319,6 +324,7 @@
 			"className": "mxGraphAnalysis",
 			"classSize": 4477,
 			"codeSmellScore": 7,
+			"numOfUnusedMethods": 6,
 			"methodMetrics": [
 				{
 					"methodName": "getInstance",
@@ -407,6 +413,7 @@
 			"className": "mxGraphGenerator",
 			"classSize": 56536,
 			"codeSmellScore": 67,
+			"numOfUnusedMethods": 33,
 			"methodMetrics": [
 				{
 					"methodName": "mxGraphGenerator",
@@ -703,6 +710,7 @@
 			"className": "mxGraphProperties",
 			"classSize": 480,
 			"codeSmellScore": 2,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "isTraverseVisible",
@@ -743,6 +751,7 @@
 			"className": "mxGraphStructure",
 			"classSize": 28504,
 			"codeSmellScore": 35,
+			"numOfUnusedMethods": 19,
 			"methodMetrics": [
 				{
 					"methodName": "isConnected",
@@ -967,6 +976,7 @@
 			"className": "mxICostFunction",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -974,6 +984,7 @@
 			"className": "mxTraversal",
 			"classSize": 5340,
 			"codeSmellScore": 11,
+			"numOfUnusedMethods": 9,
 			"methodMetrics": [
 				{
 					"methodName": "dfs",
@@ -1062,6 +1073,7 @@
 			"className": "mxUnionFind",
 			"classSize": 465,
 			"codeSmellScore": 2,
+			"numOfUnusedMethods": 2,
 			"methodMetrics": [
 				{
 					"methodName": "mxUnionFind",
@@ -1134,6 +1146,7 @@
 			"className": "mxBasicCanvas",
 			"classSize": 0,
 			"codeSmellScore": 1,
+			"numOfUnusedMethods": 3,
 			"methodMetrics": [
 				{
 					"methodName": "setTranslate",
@@ -1208,6 +1221,7 @@
 			"className": "mxGraphics2DCanvas",
 			"classSize": 11949,
 			"codeSmellScore": 15,
+			"numOfUnusedMethods": 8,
 			"methodMetrics": [
 				{
 					"methodName": "mxGraphics2DCanvas",
@@ -1368,6 +1382,7 @@
 			"className": "mxGraphicsCanvas2D",
 			"classSize": 111541,
 			"codeSmellScore": 126,
+			"numOfUnusedMethods": 20,
 			"methodMetrics": [
 				{
 					"methodName": "Color>",
@@ -1926,6 +1941,7 @@
 			"className": "mxHtmlCanvas",
 			"classSize": 3260,
 			"codeSmellScore": 7,
+			"numOfUnusedMethods": 5,
 			"methodMetrics": [
 				{
 					"methodName": "mxHtmlCanvas",
@@ -2014,6 +2030,7 @@
 			"className": "mxICanvas",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -2021,6 +2038,7 @@
 			"className": "mxICanvas2D",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -2028,6 +2046,7 @@
 			"className": "mxImageCanvas",
 			"classSize": 1441,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 2,
 			"methodMetrics": [
 				{
 					"methodName": "mxImageCanvas",
@@ -2116,6 +2135,7 @@
 			"className": "mxSvgCanvas",
 			"classSize": 31768,
 			"codeSmellScore": 39,
+			"numOfUnusedMethods": 16,
 			"methodMetrics": [
 				{
 					"methodName": "mxSvgCanvas",
@@ -2300,6 +2320,7 @@
 			"className": "mxVmlCanvas",
 			"classSize": 5184,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 4,
 			"methodMetrics": [
 				{
 					"methodName": "mxVmlCanvas",
@@ -2380,6 +2401,7 @@
 			"className": "mxConstCostFunction",
 			"classSize": 28,
 			"codeSmellScore": 2,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "mxConstCostFunction",
@@ -2404,6 +2426,7 @@
 			"className": "mxCostFunction",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -2411,6 +2434,7 @@
 			"className": "mxDoubleValCostFunction",
 			"classSize": 31,
 			"codeSmellScore": 1,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": [
 				{
 					"methodName": "getCost",
@@ -2427,6 +2451,7 @@
 			"className": "mxGeneratorConstFunction",
 			"classSize": 28,
 			"codeSmellScore": 2,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "mxGeneratorConstFunction",
@@ -2451,6 +2476,7 @@
 			"className": "mxGeneratorFunction",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -2458,6 +2484,7 @@
 			"className": "mxGeneratorRandomFunction",
 			"classSize": 350,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 6,
 			"methodMetrics": [
 				{
 					"methodName": "mxGeneratorRandomFunction",
@@ -2522,6 +2549,7 @@
 			"className": "mxGeneratorRandomIntFunction",
 			"classSize": 210,
 			"codeSmellScore": 2,
+			"numOfUnusedMethods": 4,
 			"methodMetrics": [
 				{
 					"methodName": "mxGeneratorRandomIntFunction",
@@ -2570,6 +2598,7 @@
 			"className": "mxCellCodec",
 			"classSize": 1065,
 			"codeSmellScore": 5,
+			"numOfUnusedMethods": 4,
 			"methodMetrics": [
 				{
 					"methodName": "mxCellCodec",
@@ -2610,6 +2639,7 @@
 			"className": "mxChildChangeCodec",
 			"classSize": 740,
 			"codeSmellScore": 5,
+			"numOfUnusedMethods": 5,
 			"methodMetrics": [
 				{
 					"methodName": "mxChildChangeCodec",
@@ -2658,6 +2688,7 @@
 			"className": "mxCodec",
 			"classSize": 9320,
 			"codeSmellScore": 12,
+			"numOfUnusedMethods": 6,
 			"methodMetrics": [
 				{
 					"methodName": "mxCodec",
@@ -2818,6 +2849,7 @@
 			"className": "mxCodecRegistry",
 			"classSize": 1652,
 			"codeSmellScore": 4,
+			"numOfUnusedMethods": 4,
 			"methodMetrics": [
 				{
 					"methodName": "register",
@@ -2882,6 +2914,7 @@
 			"className": "mxGdCodec",
 			"classSize": 320,
 			"codeSmellScore": 2,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": [
 				{
 					"methodName": "decode",
@@ -2906,6 +2939,7 @@
 			"className": "mxGenericChangeCodec",
 			"classSize": 138,
 			"codeSmellScore": 4,
+			"numOfUnusedMethods": 2,
 			"methodMetrics": [
 				{
 					"methodName": "mxGenericChangeCodec",
@@ -2930,6 +2964,7 @@
 			"className": "mxModelCodec",
 			"classSize": 396,
 			"codeSmellScore": 4,
+			"numOfUnusedMethods": 3,
 			"methodMetrics": [
 				{
 					"methodName": "mxModelCodec",
@@ -2962,6 +2997,7 @@
 			"className": "mxObjectCodec",
 			"classSize": 52193,
 			"codeSmellScore": 61,
+			"numOfUnusedMethods": 33,
 			"methodMetrics": [
 				{
 					"methodName": "mxObjectCodec",
@@ -3282,6 +3318,7 @@
 			"className": "mxRootChangeCodec",
 			"classSize": 368,
 			"codeSmellScore": 4,
+			"numOfUnusedMethods": 4,
 			"methodMetrics": [
 				{
 					"methodName": "mxRootChangeCodec",
@@ -3322,6 +3359,7 @@
 			"className": "mxStylesheetCodec",
 			"classSize": 945,
 			"codeSmellScore": 4,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "mxStylesheetCodec",
@@ -3362,6 +3400,7 @@
 			"className": "mxTerminalChangeCodec",
 			"classSize": 76,
 			"codeSmellScore": 4,
+			"numOfUnusedMethods": 2,
 			"methodMetrics": [
 				{
 					"methodName": "mxTerminalChangeCodec",
@@ -3386,6 +3425,7 @@
 			"className": "mxGraphAbstractHierarchyCell",
 			"classSize": 0,
 			"codeSmellScore": 0,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": [
 				{
 					"methodName": "setX",
@@ -3412,6 +3452,7 @@
 			"className": "mxGraphHierarchyEdge",
 			"classSize": 1650,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 3,
 			"methodMetrics": [
 				{
 					"methodName": "mxGraphHierarchyEdge",
@@ -3500,6 +3541,7 @@
 			"className": "mxGraphHierarchyModel",
 			"classSize": 11385,
 			"codeSmellScore": 15,
+			"numOfUnusedMethods": 6,
 			"methodMetrics": [
 				{
 					"methodName": "mxGraphHierarchyModel",
@@ -3604,6 +3646,7 @@
 			"className": "mxGraphHierarchyNode",
 			"classSize": 1764,
 			"codeSmellScore": 4,
+			"numOfUnusedMethods": 3,
 			"methodMetrics": [
 				{
 					"methodName": "mxGraphHierarchyNode",
@@ -3684,6 +3727,7 @@
 			"className": "mxGraphHierarchyRank",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -3691,6 +3735,7 @@
 			"className": "mxHierarchicalLayout",
 			"classSize": 28082,
 			"codeSmellScore": 33,
+			"numOfUnusedMethods": 25,
 			"methodMetrics": [
 				{
 					"maxNestedDepth": 0,
@@ -3989,6 +4034,7 @@
 			"className": "mxCoordinateAssignment",
 			"classSize": 32642,
 			"codeSmellScore": 40,
+			"numOfUnusedMethods": 26,
 			"methodMetrics": [
 				{
 					"methodName": "mxCoordinateAssignment",
@@ -4221,6 +4267,7 @@
 			"className": "mxHierarchicalLayoutStage",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -4228,6 +4275,7 @@
 			"className": "mxMedianHybridCrossingReduction",
 			"classSize": 4704,
 			"codeSmellScore": 9,
+			"numOfUnusedMethods": 6,
 			"methodMetrics": [
 				{
 					"methodName": "mxMedianHybridCrossingReduction",
@@ -4306,6 +4354,7 @@
 			"className": "mxMinimumCycleRemover",
 			"classSize": 512,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "mxMinimumCycleRemover",
@@ -4338,6 +4387,7 @@
 			"className": "mxCircleLayout",
 			"classSize": 4128,
 			"codeSmellScore": 7,
+			"numOfUnusedMethods": 12,
 			"methodMetrics": [
 				{
 					"methodName": "mxCircleLayout",
@@ -4466,6 +4516,7 @@
 			"className": "mxCompactTreeLayout",
 			"classSize": 44562,
 			"codeSmellScore": 52,
+			"numOfUnusedMethods": 34,
 			"methodMetrics": [
 				{
 					"methodName": "mxCompactTreeLayout",
@@ -4818,6 +4869,7 @@
 			"className": "mxEdgeLabelLayout",
 			"classSize": 544,
 			"codeSmellScore": 4,
+			"numOfUnusedMethods": 3,
 			"methodMetrics": [
 				{
 					"methodName": "mxEdgeLabelLayout",
@@ -4858,6 +4910,7 @@
 			"className": "mxFastOrganicLayout",
 			"classSize": 15936,
 			"codeSmellScore": 20,
+			"numOfUnusedMethods": 20,
 			"methodMetrics": [
 				{
 					"methodName": "mxFastOrganicLayout",
@@ -5058,6 +5111,7 @@
 			"className": "mxGraphLayout",
 			"classSize": 0,
 			"codeSmellScore": 1,
+			"numOfUnusedMethods": 7,
 			"methodMetrics": [
 				{
 					"methodName": "mxGraphLayout",
@@ -5168,6 +5222,7 @@
 			"className": "mxIGraphLayout",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -5175,6 +5230,7 @@
 			"className": "mxOrganicLayout",
 			"classSize": 22477,
 			"codeSmellScore": 27,
+			"numOfUnusedMethods": 67,
 			"methodMetrics": [
 				{
 					"methodName": "mxOrganicLayout",
@@ -5711,6 +5767,7 @@
 			"className": "mxParallelEdgeLayout",
 			"classSize": 1253,
 			"codeSmellScore": 4,
+			"numOfUnusedMethods": 4,
 			"methodMetrics": [
 				{
 					"methodName": "mxParallelEdgeLayout",
@@ -5767,6 +5824,7 @@
 			"className": "mxPartitionLayout",
 			"classSize": 1568,
 			"codeSmellScore": 4,
+			"numOfUnusedMethods": 2,
 			"methodMetrics": [
 				{
 					"methodName": "mxPartitionLayout",
@@ -5807,6 +5865,7 @@
 			"className": "mxStackLayout",
 			"classSize": 2568,
 			"codeSmellScore": 6,
+			"numOfUnusedMethods": 3,
 			"methodMetrics": [
 				{
 					"methodName": "mxStackLayout",
@@ -5855,6 +5914,7 @@
 			"className": "mxOrthogonalModel",
 			"classSize": 7,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "mxOrthogonalModel",
@@ -5871,6 +5931,7 @@
 			"className": "mxPointPair",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -5878,6 +5939,7 @@
 			"className": "mxPointSequence",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -5885,6 +5947,7 @@
 			"className": "mxSegment",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -5892,6 +5955,7 @@
 			"className": "mxOrthogonalLayout",
 			"classSize": 66,
 			"codeSmellScore": 2,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "mxOrthogonalLayout",
@@ -5916,6 +5980,7 @@
 			"className": "mxCell",
 			"classSize": 29645,
 			"codeSmellScore": 34,
+			"numOfUnusedMethods": 2,
 			"methodMetrics": [
 				{
 					"maxNestedDepth": 0,
@@ -6286,6 +6351,7 @@
 			"className": "mxCellPath",
 			"classSize": 532,
 			"codeSmellScore": 2,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "create",
@@ -6326,6 +6392,7 @@
 			"className": "mxGeometry",
 			"classSize": 6282,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 3,
 			"methodMetrics": [
 				{
 					"methodName": "mxGeometry",
@@ -6478,6 +6545,7 @@
 			"className": "mxGraphModel",
 			"classSize": 431928,
 			"codeSmellScore": 482,
+			"numOfUnusedMethods": 38,
 			"methodMetrics": [
 				{
 					"methodName": "mxGraphModel",
@@ -7312,6 +7380,7 @@
 			"className": "mxICell",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -7319,6 +7388,7 @@
 			"className": "mxIGraphModel",
 			"classSize": 0,
 			"codeSmellScore": 2,
+			"numOfUnusedMethods": 2,
 			"methodMetrics": [
 				{
 					"methodName": "mxAtomicGraphModelChange",
@@ -7345,6 +7415,7 @@
 			"className": "mxDomOutputParser",
 			"classSize": 20655,
 			"codeSmellScore": 24,
+			"numOfUnusedMethods": 2,
 			"methodMetrics": [
 				{
 					"methodName": "main",
@@ -7399,6 +7470,7 @@
 			"className": "mxGraphViewImageReader",
 			"classSize": 4698,
 			"codeSmellScore": 6,
+			"numOfUnusedMethods": 4,
 			"methodMetrics": [
 				{
 					"methodName": "mxGraphViewImageReader",
@@ -7519,6 +7591,7 @@
 			"className": "mxGraphViewReader",
 			"classSize": 0,
 			"codeSmellScore": 2,
+			"numOfUnusedMethods": 4,
 			"methodMetrics": [
 				{
 					"methodName": "setHtmlLabels",
@@ -7569,6 +7642,7 @@
 			"className": "mxSaxOutputHandler",
 			"classSize": 21808,
 			"codeSmellScore": 26,
+			"numOfUnusedMethods": 4,
 			"methodMetrics": [
 				{
 					"methodName": "mxSaxOutputHandler",
@@ -7633,6 +7707,7 @@
 			"className": "mxActorShape",
 			"classSize": 31,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "createShape",
@@ -7649,6 +7724,7 @@
 			"className": "mxArrowShape",
 			"classSize": 58,
 			"codeSmellScore": 5,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "createShape",
@@ -7665,6 +7741,7 @@
 			"className": "mxBasicShape",
 			"classSize": 984,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 6,
 			"methodMetrics": [
 				{
 					"methodName": "paintShape",
@@ -7737,6 +7814,7 @@
 			"className": "mxCloudShape",
 			"classSize": 39,
 			"codeSmellScore": 5,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "createShape",
@@ -7753,6 +7831,7 @@
 			"className": "mxConnectorShape",
 			"classSize": 1074,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 2,
 			"methodMetrics": [
 				{
 					"methodName": "paintShape",
@@ -7809,6 +7888,7 @@
 			"className": "mxCurveLabelShape",
 			"classSize": 6611,
 			"codeSmellScore": 10,
+			"numOfUnusedMethods": 10,
 			"methodMetrics": [
 				{
 					"methodName": "FontRenderContext",
@@ -7917,6 +7997,7 @@
 			"className": "mxCurveShape",
 			"classSize": 696,
 			"codeSmellScore": 2,
+			"numOfUnusedMethods": 3,
 			"methodMetrics": [
 				{
 					"methodName": "mxCurveShape",
@@ -7973,6 +8054,7 @@
 			"className": "mxCylinderShape",
 			"classSize": 40,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": [
 				{
 					"methodName": "paintShape",
@@ -7989,6 +8071,7 @@
 			"className": "mxDefaultTextShape",
 			"classSize": 246,
 			"codeSmellScore": 5,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "paintShape",
@@ -8013,6 +8096,7 @@
 			"className": "mxDoubleEllipseShape",
 			"classSize": 24,
 			"codeSmellScore": 1,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": [
 				{
 					"methodName": "paintShape",
@@ -8029,6 +8113,7 @@
 			"className": "mxDoubleRectangleShape",
 			"classSize": 24,
 			"codeSmellScore": 1,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": [
 				{
 					"methodName": "paintShape",
@@ -8045,6 +8130,7 @@
 			"className": "mxEllipseShape",
 			"classSize": 14,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "createShape",
@@ -8061,6 +8147,7 @@
 			"className": "mxHexagonShape",
 			"classSize": 41,
 			"codeSmellScore": 5,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "createShape",
@@ -8077,6 +8164,7 @@
 			"className": "mxHtmlTextShape",
 			"classSize": 400,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 2,
 			"methodMetrics": [
 				{
 					"methodName": "isReplaceHtmlLinefeeds",
@@ -8117,6 +8205,7 @@
 			"className": "mxIMarker",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -8124,6 +8213,7 @@
 			"className": "mxIShape",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -8131,6 +8221,7 @@
 			"className": "mxITextShape",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -8138,6 +8229,7 @@
 			"className": "mxImageShape",
 			"classSize": 378,
 			"codeSmellScore": 2,
+			"numOfUnusedMethods": 3,
 			"methodMetrics": [
 				{
 					"methodName": "paintShape",
@@ -8194,6 +8286,7 @@
 			"className": "mxLabelShape",
 			"classSize": 792,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 4,
 			"methodMetrics": [
 				{
 					"methodName": "paintShape",
@@ -8250,6 +8343,7 @@
 			"className": "mxLineShape",
 			"classSize": 100,
 			"codeSmellScore": 1,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": [
 				{
 					"methodName": "paintShape",
@@ -8274,6 +8368,7 @@
 			"className": "mxMarkerRegistry",
 			"classSize": 804,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "paintMarker",
@@ -8306,6 +8401,7 @@
 			"className": "mxRectangleShape",
 			"classSize": 168,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "paintShape",
@@ -8330,6 +8426,7 @@
 			"className": "mxRhombusShape",
 			"classSize": 26,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "createShape",
@@ -8346,6 +8443,7 @@
 			"className": "mxStencil",
 			"classSize": 10410,
 			"codeSmellScore": 14,
+			"numOfUnusedMethods": 7,
 			"methodMetrics": [
 				{
 					"methodName": "mxStencil",
@@ -8466,6 +8564,7 @@
 			"className": "mxStencilRegistry",
 			"classSize": 48,
 			"codeSmellScore": 2,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "addStencil",
@@ -8490,6 +8589,7 @@
 			"className": "mxStencilShape",
 			"classSize": 10155,
 			"codeSmellScore": 14,
+			"numOfUnusedMethods": 18,
 			"methodMetrics": [
 				{
 					"methodName": "mxStencilShape",
@@ -8682,6 +8782,7 @@
 			"className": "mxSwimlaneShape",
 			"classSize": 2592,
 			"codeSmellScore": 7,
+			"numOfUnusedMethods": 7,
 			"methodMetrics": [
 				{
 					"methodName": "getTitleSize",
@@ -8754,6 +8855,7 @@
 			"className": "mxTriangleShape",
 			"classSize": 47,
 			"codeSmellScore": 5,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "createShape",
@@ -8770,6 +8872,7 @@
 			"className": "mxCellHandler",
 			"classSize": 13216,
 			"codeSmellScore": 16,
+			"numOfUnusedMethods": 11,
 			"methodMetrics": [
 				{
 					"methodName": "mxCellHandler",
@@ -9034,6 +9137,7 @@
 			"className": "mxCellMarker",
 			"classSize": 19190,
 			"codeSmellScore": 23,
+			"numOfUnusedMethods": 15,
 			"methodMetrics": [
 				{
 					"methodName": "mxCellMarker",
@@ -9306,6 +9410,7 @@
 			"className": "mxCellTracker",
 			"classSize": 837,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 6,
 			"methodMetrics": [
 				{
 					"methodName": "mxCellTracker",
@@ -9386,6 +9491,7 @@
 			"className": "mxConnectPreview",
 			"classSize": 5644,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 6,
 			"methodMetrics": [
 				{
 					"methodName": "mxConnectPreview",
@@ -9514,6 +9620,7 @@
 			"className": "mxConnectionHandler",
 			"classSize": 39024,
 			"codeSmellScore": 45,
+			"numOfUnusedMethods": 27,
 			"methodMetrics": [
 				{
 					"methodName": "mxIEventListener",
@@ -9890,6 +9997,7 @@
 			"className": "mxEdgeHandler",
 			"classSize": 29138,
 			"codeSmellScore": 34,
+			"numOfUnusedMethods": 14,
 			"methodMetrics": [
 				{
 					"methodName": "mxCellMarker",
@@ -10154,6 +10262,7 @@
 			"className": "mxElbowEdgeHandler",
 			"classSize": 480,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 3,
 			"methodMetrics": [
 				{
 					"methodName": "mxElbowEdgeHandler",
@@ -10202,6 +10311,7 @@
 			"className": "mxGraphHandler",
 			"classSize": 86848,
 			"codeSmellScore": 99,
+			"numOfUnusedMethods": 39,
 			"methodMetrics": [
 				{
 					"methodName": "mxGraphHandler",
@@ -10674,6 +10784,7 @@
 			"className": "mxGraphTransferHandler",
 			"classSize": 10076,
 			"codeSmellScore": 13,
+			"numOfUnusedMethods": 14,
 			"methodMetrics": [
 				{
 					"methodName": "getImportCount",
@@ -10850,6 +10961,7 @@
 			"className": "mxInsertHandler",
 			"classSize": 4176,
 			"codeSmellScore": 6,
+			"numOfUnusedMethods": 5,
 			"methodMetrics": [
 				{
 					"methodName": "mxInsertHandler",
@@ -10978,6 +11090,7 @@
 			"className": "mxKeyboardHandler",
 			"classSize": 416,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 2,
 			"methodMetrics": [
 				{
 					"methodName": "mxKeyboardHandler",
@@ -11018,6 +11131,7 @@
 			"className": "mxMovePreview",
 			"classSize": 12480,
 			"codeSmellScore": 16,
+			"numOfUnusedMethods": 16,
 			"methodMetrics": [
 				{
 					"methodName": "mxMovePreview",
@@ -11234,6 +11348,7 @@
 			"className": "mxPanningHandler",
 			"classSize": 791,
 			"codeSmellScore": 2,
+			"numOfUnusedMethods": 2,
 			"methodMetrics": [
 				{
 					"methodName": "mxPanningHandler",
@@ -11298,6 +11413,7 @@
 			"className": "mxRotationHandler",
 			"classSize": 4872,
 			"codeSmellScore": 7,
+			"numOfUnusedMethods": 5,
 			"methodMetrics": [
 				{
 					"methodName": "mxRotationHandler",
@@ -11418,6 +11534,7 @@
 			"className": "mxRubberband",
 			"classSize": 6657,
 			"codeSmellScore": 9,
+			"numOfUnusedMethods": 12,
 			"methodMetrics": [
 				{
 					"methodName": "mxRubberband",
@@ -11594,6 +11711,7 @@
 			"className": "mxSelectionCellsHandler",
 			"classSize": 12768,
 			"codeSmellScore": 16,
+			"numOfUnusedMethods": 14,
 			"methodMetrics": [
 				{
 					"methodName": "mxIEventListener",
@@ -11810,6 +11928,7 @@
 			"className": "mxVertexHandler",
 			"classSize": 5174,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 7,
 			"methodMetrics": [
 				{
 					"maxNestedDepth": 0,
@@ -11924,6 +12043,7 @@
 			"className": "mxGraphComponent",
 			"classSize": 820157,
 			"codeSmellScore": 913,
+			"numOfUnusedMethods": 134,
 			"methodMetrics": [
 				{
 					"methodName": "mxIEventListener",
@@ -13590,6 +13710,7 @@
 			"className": "mxGraphOutline",
 			"classSize": 23157,
 			"codeSmellScore": 28,
+			"numOfUnusedMethods": 28,
 			"methodMetrics": [
 				{
 					"methodName": "mxIEventListener",
@@ -13894,6 +14015,7 @@
 			"className": "mxAnimation",
 			"classSize": 816,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 6,
 			"methodMetrics": [
 				{
 					"methodName": "mxAnimation",
@@ -13966,6 +14088,7 @@
 			"className": "mxCellOverlay",
 			"classSize": 1057,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 5,
 			"methodMetrics": [
 				{
 					"methodName": "mxCellOverlay",
@@ -14030,6 +14153,7 @@
 			"className": "mxGraphActions",
 			"classSize": 49500,
 			"codeSmellScore": 56,
+			"numOfUnusedMethods": 14,
 			"methodMetrics": [
 				{
 					"methodName": "getDeleteAction",
@@ -14352,6 +14476,7 @@
 			"className": "mxGraphTransferable",
 			"classSize": 10240,
 			"codeSmellScore": 14,
+			"numOfUnusedMethods": 14,
 			"methodMetrics": [
 				{
 					"methodName": "mxGraphTransferable",
@@ -14512,6 +14637,7 @@
 			"className": "mxICellOverlay",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -14519,6 +14645,7 @@
 			"className": "mxMorphing",
 			"classSize": 4880,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 9,
 			"methodMetrics": [
 				{
 					"methodName": "mxMorphing",
@@ -14647,6 +14774,7 @@
 			"className": "mxMouseAdapter",
 			"classSize": 455,
 			"codeSmellScore": 2,
+			"numOfUnusedMethods": 5,
 			"methodMetrics": [
 				{
 					"methodName": "mouseDragged",
@@ -14711,6 +14839,7 @@
 			"className": "mxSwingConstants",
 			"classSize": 835,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": [
 				{
 					"methodName": "BasicStroke",
@@ -14743,6 +14872,7 @@
 			"className": "mxCellEditor",
 			"classSize": 18660,
 			"codeSmellScore": 23,
+			"numOfUnusedMethods": 20,
 			"methodMetrics": [
 				{
 					"methodName": "AbstractAction",
@@ -14975,6 +15105,7 @@
 			"className": "mxCellStatePreview",
 			"classSize": 10416,
 			"codeSmellScore": 14,
+			"numOfUnusedMethods": 11,
 			"methodMetrics": [
 				{
 					"methodName": "mxCellStatePreview",
@@ -15143,6 +15274,7 @@
 			"className": "mxICellEditor",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -15150,6 +15282,7 @@
 			"className": "mxInteractiveCanvas",
 			"classSize": 1408,
 			"codeSmellScore": 4,
+			"numOfUnusedMethods": 6,
 			"methodMetrics": [
 				{
 					"methodName": "mxInteractiveCanvas",
@@ -15222,6 +15355,7 @@
 			"className": "mxBase64",
 			"classSize": 5400,
 			"codeSmellScore": 9,
+			"numOfUnusedMethods": 5,
 			"methodMetrics": [
 				{
 					"maxNestedDepth": 0,
@@ -15280,6 +15414,7 @@
 			"className": "mxCellRenderer",
 			"classSize": 2134,
 			"codeSmellScore": 5,
+			"numOfUnusedMethods": 2,
 			"methodMetrics": [
 				{
 					"methodName": "drawCells",
@@ -15346,6 +15481,7 @@
 			"className": "mxConstants",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -15353,6 +15489,7 @@
 			"className": "mxCurve",
 			"classSize": 35829,
 			"codeSmellScore": 43,
+			"numOfUnusedMethods": 19,
 			"methodMetrics": [
 				{
 					"methodName": "mxLine",
@@ -15569,6 +15706,7 @@
 			"className": "mxDomUtils",
 			"classSize": 340,
 			"codeSmellScore": 1,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": [
 				{
 					"methodName": "createDocument",
@@ -15609,6 +15747,7 @@
 			"className": "mxEvent",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -15616,6 +15755,7 @@
 			"className": "mxEventObject",
 			"classSize": 623,
 			"codeSmellScore": 1,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": [
 				{
 					"methodName": "mxEventObject",
@@ -15672,6 +15812,7 @@
 			"className": "mxEventSource",
 			"classSize": 1740,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 3,
 			"methodMetrics": [
 				{
 					"methodName": "mxEventSource",
@@ -15744,6 +15885,7 @@
 			"className": "mxHtmlColor",
 			"classSize": 2790,
 			"codeSmellScore": 5,
+			"numOfUnusedMethods": 5,
 			"methodMetrics": [
 				{
 					"methodName": "Pattern.compile",
@@ -15816,6 +15958,7 @@
 			"className": "mxImage",
 			"classSize": 539,
 			"codeSmellScore": 2,
+			"numOfUnusedMethods": 3,
 			"methodMetrics": [
 				{
 					"methodName": "mxImage",
@@ -15880,6 +16023,7 @@
 			"className": "mxImageBundle",
 			"classSize": 114,
 			"codeSmellScore": 2,
+			"numOfUnusedMethods": 2,
 			"methodMetrics": [
 				{
 					"methodName": "getImages",
@@ -15912,6 +16056,7 @@
 			"className": "mxLightweightLabel",
 			"classSize": 2352,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": [
 				{
 					"methodName": "getSharedInstance",
@@ -15960,6 +16105,7 @@
 			"className": "mxLine",
 			"classSize": 623,
 			"codeSmellScore": 2,
+			"numOfUnusedMethods": 2,
 			"methodMetrics": [
 				{
 					"methodName": "mxLine",
@@ -16016,6 +16162,7 @@
 			"className": "mxPoint",
 			"classSize": 1782,
 			"codeSmellScore": 2,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": [
 				{
 					"methodName": "mxPoint",
@@ -16096,6 +16243,7 @@
 			"className": "mxRectangle",
 			"classSize": 5719,
 			"codeSmellScore": 7,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "mxRectangle",
@@ -16240,6 +16388,7 @@
 			"className": "mxResources",
 			"classSize": 1431,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 2,
 			"methodMetrics": [
 				{
 					"methodName": "getBundles",
@@ -16288,6 +16437,7 @@
 			"className": "mxSpline",
 			"classSize": 1450,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 3,
 			"methodMetrics": [
 				{
 					"methodName": "mxSpline",
@@ -16376,6 +16526,7 @@
 			"className": "mxSpline1D",
 			"classSize": 1673,
 			"codeSmellScore": 4,
+			"numOfUnusedMethods": 4,
 			"methodMetrics": [
 				{
 					"methodName": "mxSpline1D",
@@ -16440,6 +16591,7 @@
 			"className": "mxStyleUtils",
 			"classSize": 3750,
 			"codeSmellScore": 6,
+			"numOfUnusedMethods": 2,
 			"methodMetrics": [
 				{
 					"methodName": "getStylename",
@@ -16528,6 +16680,7 @@
 			"className": "mxUndoManager",
 			"classSize": 1251,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 4,
 			"methodMetrics": [
 				{
 					"methodName": "mxUndoManager",
@@ -16608,6 +16761,7 @@
 			"className": "mxUndoableEdit",
 			"classSize": 2249,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 3,
 			"methodMetrics": [
 				{
 					"methodName": "mxUndoableEdit",
@@ -16712,6 +16866,7 @@
 			"className": "mxUtils",
 			"classSize": 226408,
 			"codeSmellScore": 254,
+			"numOfUnusedMethods": 17,
 			"methodMetrics": [
 				{
 					"methodName": "System.getProperty",
@@ -17256,6 +17411,7 @@
 			"className": "mxXmlUtils",
 			"classSize": 288,
 			"codeSmellScore": 1,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": [
 				{
 					"methodName": "getDocumentBuilder",
@@ -17288,6 +17444,7 @@
 			"className": "mxPngEncodeParam",
 			"classSize": 0,
 			"codeSmellScore": 2,
+			"numOfUnusedMethods": 48,
 			"methodMetrics": [
 				{
 					"methodName": "getDefaultEncodeParam",
@@ -17802,6 +17959,7 @@
 			"className": "mxPngImageEncoder",
 			"classSize": 27144,
 			"codeSmellScore": 32,
+			"numOfUnusedMethods": 25,
 			"methodMetrics": [
 				{
 					"methodName": "updateCRC",
@@ -18138,6 +18296,7 @@
 			"className": "mxPngSuggestedPaletteEntry",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -18145,6 +18304,7 @@
 			"className": "mxPngTextDecoder",
 			"classSize": 99,
 			"codeSmellScore": 5,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "decodeCompressedText",
@@ -18161,6 +18321,7 @@
 			"className": "AWTPathProducer",
 			"classSize": 6975,
 			"codeSmellScore": 9,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "createShape",
@@ -18369,6 +18530,7 @@
 			"className": "AWTPolygonProducer",
 			"classSize": 52,
 			"codeSmellScore": 2,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "createShape",
@@ -18393,6 +18555,7 @@
 			"className": "AWTPolylineProducer",
 			"classSize": 637,
 			"codeSmellScore": 1,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "createShape",
@@ -18457,6 +18620,7 @@
 			"className": "AbstractParser",
 			"classSize": 0,
 			"codeSmellScore": 2,
+			"numOfUnusedMethods": 7,
 			"methodMetrics": [
 				{
 					"methodName": "getCurrent",
@@ -18525,6 +18689,7 @@
 			"className": "CSSConstants",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -18532,6 +18697,7 @@
 			"className": "DefaultErrorHandler",
 			"classSize": 12,
 			"codeSmellScore": 1,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": [
 				{
 					"methodName": "error",
@@ -18548,6 +18714,7 @@
 			"className": "ErrorHandler",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -18555,6 +18722,7 @@
 			"className": "ExtendedGeneralPath",
 			"classSize": 30927,
 			"codeSmellScore": 36,
+			"numOfUnusedMethods": 6,
 			"methodMetrics": [
 				{
 					"methodName": "ExtendedGeneralPath",
@@ -18779,6 +18947,7 @@
 			"className": "ExtendedPathIterator",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -18786,6 +18955,7 @@
 			"className": "NormalizingReader",
 			"classSize": 0,
 			"codeSmellScore": 0,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": [
 				{
 					"methodName": "read",
@@ -18800,6 +18970,7 @@
 			"className": "NumberParser",
 			"classSize": 0,
 			"codeSmellScore": 1,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "parseFloat",
@@ -18820,6 +18991,7 @@
 			"className": "ParseException",
 			"classSize": 756,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 3,
 			"methodMetrics": [
 				{
 					"methodName": "ParseException",
@@ -18868,6 +19040,7 @@
 			"className": "Parser",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -18875,6 +19048,7 @@
 			"className": "PathHandler",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -18882,6 +19056,7 @@
 			"className": "PathParser",
 			"classSize": 27810,
 			"codeSmellScore": 35,
+			"numOfUnusedMethods": 26,
 			"methodMetrics": [
 				{
 					"methodName": "PathParser",
@@ -19106,6 +19281,7 @@
 			"className": "PointsHandler",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -19113,6 +19289,7 @@
 			"className": "PointsParser",
 			"classSize": 288,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 4,
 			"methodMetrics": [
 				{
 					"methodName": "PointsParser",
@@ -19153,6 +19330,7 @@
 			"className": "ShapeProducer",
 			"classSize": 0,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 0,
 			"methodMetrics": []
 		},
 		{
@@ -19160,6 +19338,7 @@
 			"className": "StringNormalizingReader",
 			"classSize": 460,
 			"codeSmellScore": 1,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "StringNormalizingReader",
@@ -19208,6 +19387,7 @@
 			"className": "mxCellState",
 			"classSize": 21964,
 			"codeSmellScore": 25,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "mxCellState",
@@ -19512,6 +19692,7 @@
 			"className": "mxConnectionConstraint",
 			"classSize": 462,
 			"codeSmellScore": 2,
+			"numOfUnusedMethods": 3,
 			"methodMetrics": [
 				{
 					"methodName": "mxConnectionConstraint",
@@ -19560,6 +19741,7 @@
 			"className": "mxEdgeStyle",
 			"classSize": 23769,
 			"codeSmellScore": 30,
+			"numOfUnusedMethods": 3,
 			"methodMetrics": [
 				{
 					"methodName": "mxEdgeStyleFunction",
@@ -19602,6 +19784,7 @@
 			"className": "mxGraph",
 			"classSize": 3010875,
 			"codeSmellScore": 3348,
+			"numOfUnusedMethods": 178,
 			"methodMetrics": [
 				{
 					"methodName": "PropertyChangeSupport",
@@ -21978,6 +22161,7 @@
 			"className": "mxGraphSelectionModel",
 			"classSize": 7502,
 			"codeSmellScore": 10,
+			"numOfUnusedMethods": 7,
 			"methodMetrics": [
 				{
 					"methodName": "mxGraphSelectionModel",
@@ -22164,6 +22348,7 @@
 			"className": "mxGraphView",
 			"classSize": 133101,
 			"codeSmellScore": 150,
+			"numOfUnusedMethods": 23,
 			"methodMetrics": [
 				{
 					"methodName": "mxGraphView",
@@ -22654,6 +22839,7 @@
 			"className": "mxLayoutManager",
 			"classSize": 5681,
 			"codeSmellScore": 8,
+			"numOfUnusedMethods": 9,
 			"methodMetrics": [
 				{
 					"methodName": "mxIEventListener",
@@ -22798,6 +22984,7 @@
 			"className": "mxMultiplicity",
 			"classSize": 1856,
 			"codeSmellScore": 6,
+			"numOfUnusedMethods": 5,
 			"methodMetrics": [
 				{
 					"methodName": "mxMultiplicity",
@@ -22862,6 +23049,7 @@
 			"className": "mxPerimeter",
 			"classSize": 9180,
 			"codeSmellScore": 13,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "mxPerimeterFunction",
@@ -22886,6 +23074,7 @@
 			"className": "mxStyleRegistry",
 			"classSize": 195,
 			"codeSmellScore": 1,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "putValue",
@@ -22918,6 +23107,7 @@
 			"className": "mxStylesheet",
 			"classSize": 1920,
 			"codeSmellScore": 4,
+			"numOfUnusedMethods": 7,
 			"methodMetrics": [
 				{
 					"methodName": "getStyles",
@@ -23006,6 +23196,7 @@
 			"className": "mxSwimlaneManager",
 			"classSize": 8118,
 			"codeSmellScore": 11,
+			"numOfUnusedMethods": 11,
 			"methodMetrics": [
 				{
 					"methodName": "mxIEventListener",
@@ -23174,6 +23365,7 @@
 			"className": "mxTemporaryCellStates",
 			"classSize": 376,
 			"codeSmellScore": 3,
+			"numOfUnusedMethods": 1,
 			"methodMetrics": [
 				{
 					"methodName": "mxTemporaryCellStates",

@@ -103,6 +103,7 @@ function createNetwork(data) {
     .on("mouseleave", mouseleave)
     .on("click", function (d) {
       createHorizontalBarChart(d);
+      addUnusedMethods(d);
       $(".modal").modal("show");
     })
 
@@ -269,6 +270,10 @@ function transformBarChartData(methodMetrics) {
 
   data.series = series;
   return data;
+}
+
+function addUnusedMethods(classData) {
+  $("#unused-methods").html("Total number of unused methods: " + classData.numOfUnusedMethods);
 }
 
 
