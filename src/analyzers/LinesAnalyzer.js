@@ -21,12 +21,7 @@ export class LinesAnalyzer {
             
             let classCode = this.getClassCode(lines);
             let classMethods = 0;
-            let classLines = "";
-            try {
-                classLines = classCode.split(/\r\n|\n/);
-            } catch(e) {
-                throw e;
-            }
+            let classLines = classCode.split(/\r\n|\n/);
             for (let i = 0; i < classLines.length; i++) {
                 let line = classLines[i].trim();
                 if (util.isMethod(line)) {
