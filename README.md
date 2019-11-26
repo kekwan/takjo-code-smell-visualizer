@@ -1,6 +1,6 @@
 # TAKJO Code Smell Visualizer
 
-410 Visualization project by TAKJO
+CPSC410 Visualization project by TAKJO
 
 ## Members
 - Jakrarat (Jade) Chunnananda
@@ -10,18 +10,23 @@
 - Sadek
 
 ## About
+Here is a sample visualization analyzing the JXGraph library. 
 
 ![Visualizer Preview](https://i.imgur.com/zLvyqmU.png)
+![Method Metrics](https://imgur.com/eMnE5Is.png)
 
-The Code Smell Visualizer allows Java project developers to analyze their code for certain code smells (currently from a choice of 4) which are:
+The Code Smell Visualizer allows Java project developers to quickly identify problematic classes that show signs of code smell. We analyze methods in each class for 5 different measures of code smell, which are:
 * Law of Demeter
 * Number of Lines
-* Nesting
+* Number of Parameters 
+* Max Nested Depth
 * Unused Methods
 
-The visualizer then outputs a JSON file containing all calculated metrics and allows the user to start up a simple local web-app to view their metrics on their browser as an undirected graph, where each node represents a class. 
+Our project has 2 components, the analyzer and the visualizer.
 
-The graph allows the user to easily view the overall code smell score of the class as a whole as well as the individual methods' scores by simply clicking on the node representing that class. The visualization is color coded such that the user can easily identify classes or methods which have an unwanted score for each code smell (metric). 
+The analyzer is responsible for parsing and analyzing all the measures of code smell in a Java project. The analyzer then outputs a JSON file containing all calculated metrics and allows the user to start up a simple local web-app to view their metrics on their browser as an undirected graph, where each node represents a class. 
+
+The graph allows the user to easily view the overall code smell score of the class as a whole as well as the individual methods' metrics by simply clicking on the node representing that class. Individual method metrics are displayed as by a grouped bar chart graph. The visualization is color coded such that classes that display high code smell are marked as red, medium code smell as yellow, and low code smell as green. The size of the nodes are determined by the size of the class. This makes it easy for users to identify which classes need attention. 
 
 ### Division of Labour
 * Jade: Unwanted Methods Analyzer
