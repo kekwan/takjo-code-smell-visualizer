@@ -33,10 +33,10 @@ function createNetwork(data) {
     }
   }
 
-  // Size scale for countries
+  // Size scale for class size
   var size = d3.scaleLinear()
-    .domain([0, 5000])
-    .range([10, 35])  // circle will be between 15 and 120 px wide
+    .domain([0, 3500000])
+    .range([8, 35])
 
   // append the svg object to the body of the page
   var svg = d3.select("#network_graph")
@@ -69,7 +69,7 @@ function createNetwork(data) {
   var mouseover = function (d) {
     if (d.className != null) {
       Tooltip
-        .html('<u>' + d.className + '</u>')
+        .html(d.className + " : " + d.classSize + " lines")
         .style("left", (d3.event.pageX + 5) + "px")
         .style("top", (d3.event.pageY - 5) + "px")
         .style("opacity", 1)
@@ -103,6 +103,7 @@ function createNetwork(data) {
     .on("mouseleave", mouseleave)
     .on("click", function (d) {
       createHorizontalBarChart(d);
+      addUnusedMethods(d);
       $(".modal").modal("show");
     })
 
@@ -112,7 +113,7 @@ function createNetwork(data) {
       .id(function (d) { return d.id; })                      // This provide  the id of a node
       .links(links)                                           // and this the list of links
     )
-    .force("charge", d3.forceManyBody().strength(-4000))         // This adds repulsion between nodes. Play with the -400 for the repulsion strength
+    .force("charge", d3.forceManyBody().strength(-1000))         // This adds repulsion between nodes. Play with the -400 for the repulsion strength
     .force("center", d3.forceCenter(width / 2, height / 2))     // This force attracts nodes to the center of the svg area
     .force("x", d3.forceX(width / 2))
     .force("y", d3.forceY(height / 2))
@@ -148,7 +149,7 @@ function createHorizontalBarChart(classData) {
     barHeight = 20,
     groupHeight = barHeight * data.series.length,
     gapBetweenGroups = 15,
-    spaceForLabels = 150,
+    spaceForLabels = 175,
     spaceForLegend = 220;
 
   // Zip the series data together (first values, second values, etc.)
@@ -264,11 +265,15 @@ function transformBarChartData(methodMetrics) {
   var maxNestedDepthValues = methodMetrics.map(method => method.maxNestedDepth);
   series.push({ "label": "Max Nested Depth", "values": maxNestedDepthValues });
 
-  var lawOfDemeterValues = methodMetrics.map(method => method.lawOfDemeter);
+  var lawOfDemeterValues = methodMetrics.map(method => method.numLawOfDemeterViolations);
   series.push({ "label": "Law of Demeter Violations", "values": lawOfDemeterValues });
 
   data.series = series;
   return data;
+}
+
+function addUnusedMethods(classData) {
+  $("#unused-methods").html("Total number of unused methods: " + classData.numOfUnusedMethods);
 }
 
 

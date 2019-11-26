@@ -49,6 +49,7 @@ export class Utils {
                 "className": className.split('.')[0],
                 "classSize": -1,
                 "codeSmellScore": -1,
+                "numOfUnusedMethods": 0,
                 "methodMetrics": []
             };
             arr.push(classObj);
@@ -175,6 +176,7 @@ export class Utils {
         let data = obj.data;
         let goodCSize = 900;
         let score = 0;
+        let numOfUnusedMethods = 0;
         for (let classObj of data) {
             let numOfMethods = classObj.methodMetrics.length;
             if (numOfMethods === 0) {
@@ -183,15 +185,26 @@ export class Utils {
             } else {
             score = ((classObj.classSize) / goodCSize) + this.calculateWeightHelper(classObj.methodMetrics);
             classObj.codeSmellScore = Math.ceil(score);
+            numOfUnusedMethods = this.countUnusedMethods(classObj.methodMetrics);
+            classObj.numOfUnusedMethods = numOfUnusedMethods;
             }
         }
         return obj;
     }
 
+    countUnusedMethods(methods) {
+        let unusedCount = 0 ;
+        for (let method of methods) {
+            if (method.isUnused) {
+                unusedCount++;
+            }
+        }
+        return unusedCount;
+    }
     calculateWeightHelper(methods) {
         let weight = 0;
         let numOfMethods = methods.length;
-        let badSizeCount = 0
+        let badSizeCount = 0;
         let badParamCount = 0;
         let badDepthCount = 0;
         let badLodCount = 0;

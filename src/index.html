@@ -44,6 +44,7 @@
                                 <h5 class="modal-title" id="modalLongTitle">Method Metrics</h5>
                             </div>
                             <div class="modal-body">
+                                <p class="font-weight-light" id="unused-methods"></p>
                                 <svg class="chart" id="metrics_chart"></svg>
                                 <div class="alert alert-warning hide" id="noMethodAlert" role="alert">No methods exist
                                     for this
@@ -63,6 +64,6 @@
 
 <script>
     d3.queue()
-        .defer(d3.json, "metrics/mockData.json")
+        .defer(d3.json, "metrics/mxGraphData.json")
         .await(create);
 </script>
